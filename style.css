@@ -1,0 +1,306 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #09090b 0%,
+            #18181b 45%,
+            #2e1065 100%
+        );
+
+    min-height:100vh;
+
+    color:#f4f4f5;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    backdrop-filter:blur(10px);
+
+    padding:20px 30px;
+
+    border-radius:24px;
+
+    margin:25px auto;
+
+    max-width:1300px;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35),
+        0 4px 12px rgba(168,85,247,0.10);
+}
+
+
+/* =========================
+   LOGO AREA
+========================= */
+
+.logo-area h1{
+
+    font-size:30px;
+
+    margin-bottom:6px;
+
+    font-weight:900;
+
+    letter-spacing:0.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a855f7 0%,
+            #f59e0b 55%,
+            #ea580c 100%
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+}
+
+.logo-area p{
+
+    font-size:14px;
+
+    color:#a1a1aa;
+
+    font-weight:500;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+
+    width:100%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:20px 40px 40px;
+}
+
+.titulo-dashboard{
+
+    font-size:34px;
+
+    margin-bottom:35px;
+
+    color:#fafafa;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards-container{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap:28px;
+}
+
+.card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    backdrop-filter:blur(8px);
+
+    border-radius:24px;
+
+    padding:32px;
+
+    text-decoration:none;
+
+    color:#f4f4f5;
+
+    transition:0.28s;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.30),
+        0 4px 10px rgba(168,85,247,0.08);
+}
+
+.modulo-card:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.01);
+
+    border-color:rgba(168,85,247,0.35);
+
+    box-shadow:
+        0 20px 35px rgba(0,0,0,0.45),
+        0 10px 20px rgba(249,115,22,0.10);
+}
+
+
+/* =========================
+   ICONOS
+========================= */
+
+.icono{
+
+    font-size:60px;
+
+    margin-bottom:22px;
+
+    filter:drop-shadow(
+        0 4px 10px rgba(249,115,22,0.18)
+    );
+}
+
+
+/* =========================
+   TEXTOS CARD
+========================= */
+
+.card h3{
+
+    font-size:25px;
+
+    margin-bottom:14px;
+
+    color:#fafafa;
+
+    font-weight:800;
+}
+
+.card p{
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    color:#d4d4d8;
+}
+
+
+/* =========================
+   PROXIMAMENTE
+========================= */
+
+.proximamente-card{
+
+    opacity:0.78;
+}
+
+
+/* =========================
+   LOGO NAVBAR
+========================= */
+
+.logo-navbar{
+
+    width:140px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:100px;
+
+    border:3px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 8px 20px rgba(249,115,22,0.15),
+        0 5px 15px rgba(168,85,247,0.15);
+
+    transition:0.25s;
+}
+
+.logo-navbar:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        text-align:center;
+
+        margin:15px;
+    }
+
+    .dashboard{
+
+        padding:25px;
+    }
+
+    .titulo-dashboard{
+
+        font-size:26px;
+    }
+
+    .logo-navbar{
+
+        width:120px;
+
+        height:80px;
+    }
+
+}
+
+
+
+
+
+
+

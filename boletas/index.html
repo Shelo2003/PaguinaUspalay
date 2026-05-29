@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Crear Boleta</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+
+    <a href="../index.html"
+       class="volver-btn">
+
+      Volver al Portal
+
+    </a>
+
+    <h1>Boletas</h1>
+
+    <a href="boletas.html"
+        class="volver-btn">
+
+        Ver Boletas
+
+    </a>
+
+  </header>
+
+
+  <div class="container">
+
+    <h1>Crear Boleta</h1>
+
+
+    <!-- LUGAR -->
+
+    <div class="form-group">
+
+      <label>Lugar Compra</label>
+
+      <input type="text"
+             id="lugar_compra">
+
+    </div>
+
+
+    <!-- NUMERO -->
+
+    <div class="form-group">
+
+      <label>Número Boleta</label>
+
+      <input type="text"
+             id="numero_boleta">
+
+    </div>
+
+
+    <!-- FECHA -->
+
+    <div class="form-group">
+
+      <label>Fecha</label>
+
+      <input type="date"
+             id="fecha">
+
+    </div>
+
+
+    <hr>
+
+
+    <!-- PRODUCTOS -->
+
+    <h2>Productos</h2>
+
+    <div id="productos-container"></div>
+
+
+    <button id="agregar-producto">
+
+      Agregar Producto
+
+    </button>
+
+
+    <hr>
+
+
+    <!-- TOTAL -->
+
+    <h2 id="total">
+
+      Total: $0
+
+    </h2>
+
+
+    <!-- GUARDAR -->
+
+    <button id="guardar-boleta">
+
+      Guardar Boleta
+
+    </button>
+
+
+    <br><br>
+
+
+  </div>
+
+
+  <!-- TOAST -->
+
+  <div id="toast"
+       class="toast">
+
+  </div>
+
+
+  <!-- JS -->
+
+  <script src="js/api.js"></script>
+
+  <script src="js/utils.js"></script>
+
+  <script src="js/crear-boleta.js"></script>
+
+</body>
+</html>

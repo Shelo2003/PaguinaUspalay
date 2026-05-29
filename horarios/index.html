@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Horarios Cocina</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <!-- IZQUIERDA -->
+
+        <a href="../index.html"
+           class="volver-btn">
+
+            Volver al Portal
+
+        </a>
+
+
+        <!-- CENTRO -->
+
+        <h1>Horarios Cocina</h1>
+
+
+        <!-- DERECHA -->
+
+        <a href="personal.html"
+           class="personal-btn">
+
+            Agregar Persona
+
+        </a>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="container">
+
+        <h2 class="titulo">
+            Horario Semanal
+        </h2>
+
+
+        <!-- PDF -->
+
+        <div class="horarios-pdf">
+
+
+            
+                <!--TURNO DIA-->
+            
+
+            <h2 class="subtitulo-turno turno-dia-title">
+                ☀️ Turno Día
+            </h2>
+
+
+            <div class="tabla-horario-container">
+
+                <table class="tabla-horario">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <!-- MARTES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Martes'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Martes"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- MIERCOLES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Miércoles'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Miércoles"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- JUEVES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Jueves'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Jueves"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- VIERNES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Viernes'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Viernes"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- SABADO -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Sábado'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Sábado"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- DOMINGO -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'dia',
+                                                'Domingo'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="dia-Domingo"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- =========================
+                 TURNO NOCHE
+            ========================= -->
+
+            <h2 class="subtitulo-turno turno-noche-title">
+                🌙 Turno Noche
+            </h2>
+
+
+            <div class="tabla-horario-container">
+
+                <table class="tabla-horario">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <!-- MARTES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Martes'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Martes"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- MIERCOLES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Miércoles'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Miércoles"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- JUEVES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Jueves'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Jueves"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- VIERNES -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Viernes'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Viernes"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- SABADO -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Sábado'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Sábado"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- DOMINGO -->
+
+                            <td>
+
+                                <div class="dia-columna">
+
+                                    <button
+                                        class="btn-agregar"
+                                        onclick="
+                                            agregarPersona(
+                                                'noche',
+                                                'Domingo'
+                                            )
+                                        "
+                                    >
+
+                                        +
+
+                                    </button>
+
+
+                                    <div id="noche-Domingo"
+                                         class="lista-dia">
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESUMEN -->
+
+        <div class="resumen-semana">
+
+            <h2>
+                Resumen Semanal
+            </h2>
+
+            <div id="resumen-personas">
+
+            </div>
+
+        </div>
+
+
+        <!-- BOTONES -->
+
+        <div class="acciones-finales">
+
+            <button id="guardarHorarioBtn"
+                    class="guardar-btn">
+
+                Guardar Horario
+
+            </button>
+            
+
+            <button id="vaciarHorarioBtn"
+                    class="vaciar-btn">
+
+                Vaciar Horario
+
+            </button>
+
+
+            <button id="exportarPDF"
+                    class="pdf-btn">
+
+                Exportar PDF
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+
+    <div id="toast"
+         class="toast">
+
+    </div>
+
+
+    <!-- PDF -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+    <!-- JS -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/horarios.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resumen Inventario</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         TOPBAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <a href="index.html"
+           class="volver-btn">
+
+            Volver
+
+        </a>
+
+
+        <div class="logo-area">
+
+            <h1>
+                📦 Inventario
+            </h1>
+
+            <p>
+                Vista rápida desde celular
+            </p>
+
+        </div>
+
+
+        <img src="../assets/logoUspa.jpeg"
+             class="logo-navbar">
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTAINER
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- =====================
+             BUSCADOR
+        ====================== -->
+
+        <div class="buscador-box">
+
+            <input
+                type="text"
+                id="buscador"
+                placeholder="Buscar producto..."
+            >
+
+        </div>
+
+
+
+        <!-- =====================
+             ESTADO
+        ====================== -->
+
+        <div
+            id="estado"
+            class="estado-box"
+        >
+
+            ⏳ Cargando inventario...
+
+        </div>
+
+
+
+        <!-- =====================
+             LISTA
+        ====================== -->
+
+        <div
+            id="listaInventario"
+            class="cards-container"
+        >
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         JS
+    ========================== -->
+
+    <script src="api.js"></script>
+
+    <script src="inventario.js"></script>
+
+</body>
+</html>

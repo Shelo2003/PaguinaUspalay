@@ -1,0 +1,812 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #09090b 0%,
+            #18181b 45%,
+            #9a3412 100%
+        );
+
+    color:#f4f4f5;
+
+    padding:30px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.topbar{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.98),
+            rgba(39,39,42,0.98)
+        );
+
+    padding:20px 30px;
+
+    border-radius:24px;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35),
+        0 4px 12px rgba(249,115,22,0.08);
+
+}
+
+.topbar h1{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    font-size:30px;
+
+    color:white;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   BOTONES NAVBAR
+========================= */
+
+.volver-btn{
+
+    background:#ea580c;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:0.2s;
+}
+
+.volver-btn:hover{
+
+    background:#c2410c;
+
+    transform:translateY(-2px);
+
+}
+
+
+.personal-btn{
+
+    background:#f59e0b;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:0.2s;
+}
+
+.personal-btn:hover{
+
+    background:#d97706;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    max-width:1400px;
+
+    margin:auto;
+}
+
+
+/* =========================
+   TITULOS
+========================= */
+
+.titulo{
+
+    font-size:34px;
+
+    margin-bottom:30px;
+
+    color:#fafafa;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   TABLA HORARIO
+========================= */
+
+.tabla-horario-container{
+
+    overflow-x:auto;
+
+    margin-bottom:35px;
+}
+
+
+.tabla-horario{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35);
+}
+
+
+.tabla-horario th{
+
+    background:#ea580c;
+
+    color:white;
+
+    padding:20px;
+
+    font-size:18px;
+
+    text-align:center;
+
+    font-weight:800;
+}
+
+
+.tabla-horario td{
+
+    width:16.6%;
+
+    padding:16px;
+
+    border-bottom:1px solid #3f3f46;
+
+    vertical-align:top;
+}
+
+
+.tabla-horario tr:last-child td{
+
+    border-bottom:none;
+}
+
+
+/* =========================
+   COLUMNA DIA
+========================= */
+
+.dia-columna{
+
+    min-height:140px;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+
+/* =========================
+   LISTA DIA
+========================= */
+
+.lista-dia{
+
+    flex:1;
+}
+
+
+/* =========================
+   PERSONA ROW
+========================= */
+
+.persona-row{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================
+   SELECT
+========================= */
+
+.persona-row select{
+
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #3f3f46;
+
+    border-radius:12px;
+
+    background:#27272a;
+
+    color:#f4f4f5;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:0.2s;
+}
+
+.persona-row select:focus{
+
+    border-color:#ea580c;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(234,88,12,0.18);
+}
+
+
+/* =========================
+   BOTON AGREGAR
+========================= */
+
+.btn-agregar{
+
+    margin-bottom:12px;
+
+    width:100%;
+
+    border:none;
+
+    background:#ea580c;
+
+    color:white;
+
+    padding:13px;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    margin-top:0px;
+}
+
+.btn-agregar:hover{
+
+    background:#c2410c;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   BOTON ELIMINAR
+========================= */
+
+.btn-eliminar{
+
+    border:none;
+
+    background:#3f3f46;
+
+    color:#f4f4f5;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    white-space:nowrap;
+
+    width:38px;
+
+    height:38px;
+}
+
+.btn-eliminar:hover{
+
+    background:#52525b;
+
+    transform:scale(1.03);
+}
+
+
+/* =========================
+   RESUMEN
+========================= */
+
+.resumen-semana{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35);
+}
+
+.resumen-semana h2{
+
+    color:#fafafa;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+}
+
+
+#resumen-personas{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+}
+
+
+.resumen-item{
+
+    background:#27272a;
+
+    color:#fdba74;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    border:1px solid #3f3f46;
+}
+
+
+/* =========================
+   BOTONES FINALES
+========================= */
+
+.acciones-finales{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    margin-bottom:40px;
+}
+
+
+.guardar-btn{
+
+    background:#16a34a;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.guardar-btn:hover{
+
+    background:#15803d;
+
+    transform:translateY(-2px);
+}
+
+
+.pdf-btn{
+
+    background:#dc2626;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.pdf-btn:hover{
+
+    background:#b91c1c;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   PERSONAL
+========================= */
+
+.card-personal{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35);
+}
+
+
+.card-personal h3{
+
+    color:#fafafa;
+
+    margin-bottom:20px;
+
+    font-size:24px;
+}
+
+
+.agregar-persona-box{
+
+    display:flex;
+
+    gap:12px;
+}
+
+
+.input-personal{
+
+    flex:1;
+
+    padding:14px;
+
+    border:1px solid #3f3f46;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    outline:none;
+
+    background:#27272a;
+
+    color:#f4f4f5;
+}
+
+
+.input-personal:focus{
+
+    border-color:#ea580c;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(234,88,12,0.18);
+}
+
+
+.lista-personal{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+
+.persona-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#27272a;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid #3f3f46;
+
+    font-weight:600;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    background:#18181b;
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35);
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:0.3s;
+
+    z-index:9999;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.toast.success{
+    background:#16a34a;
+}
+
+.toast.error{
+    background:#ef4444;
+}
+
+.toast.warning{
+    background:#f59e0b;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    body{
+
+        padding:15px;
+    }
+
+    .tabla-horario{
+
+        min-width:900px;
+    }
+
+    .acciones-finales{
+
+        flex-direction:column;
+    }
+
+    .agregar-persona-box{
+
+        flex-direction:column;
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+    }
+
+    .topbar h1{
+
+        position:static;
+
+        transform:none;
+    }
+
+}
+
+
+.pdf-mode .btn-agregar,
+.pdf-mode .btn-eliminar{
+
+    display:none !important;
+}
+
+
+.subtitulo-turno{
+
+    margin-bottom:10px;
+
+    margin-top:5px;
+}
+
+
+/* =========================
+   BOTON VACIAR
+========================= */
+
+.vaciar-btn{
+
+    background:#ea580c;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    box-shadow:
+      0 4px 12px rgba(234,88,12,0.25);
+}
+
+
+/* HOVER */
+
+.vaciar-btn:hover{
+
+    background:#c2410c;
+
+    transform:translateY(-2px);
+}
+
+
+/* CLICK */
+
+.vaciar-btn:active{
+
+    transform:scale(0.97);
+}
+
+
+/* DESACTIVADO */
+
+.vaciar-btn:disabled{
+
+    opacity:0.7;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+
+
+
+
+
+
+/* =========================
+   PDF MODE
+========================= */
+
+.pdf-mode .turno-dia-title{
+
+    color:#f59e0b !important;
+
+}
+
+
+.pdf-mode .turno-noche-title{
+
+    color:#8b5cf6 !important;
+
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Planificación</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <h1>
+            📋 Pendientes
+        </h1>
+
+
+        <a href="../index.html"
+           class="volver-btn">
+
+            Volver al Portal
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================
+         BOTON PROVEEDORES
+    ========================== -->
+
+    <div class="top-navigation">
+
+        <a href="proveedores.html"
+           class="navigation-btn">
+
+            🗓️ Ver Proveedores
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTAINER
+    ========================== -->
+
+    <main class="container">
+
+
+        <section>
+
+
+            <div class="section-header">
+
+                <h2>
+                    Pendientes Actuales
+                </h2>
+
+                <p>
+                    Pendientes enviados desde caja
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================
+                 ESTADO
+            ====================== -->
+
+            <div
+                id="estadoPendientes"
+                class="estado-pendientes"
+            >
+
+                ⏳ Cargando pedidos...
+
+            </div>
+
+
+
+            <!-- =====================
+                 LISTA
+            ====================== -->
+
+            <div
+                id="listaPendientes"
+                class="lista-pendientes"
+            >
+
+            </div>
+
+
+
+            <!-- =====================
+                 BOTON
+            ====================== -->
+
+            <div class="acciones-box">
+
+                <button
+                    id="todoListoBtn"
+                    class="guardar-btn"
+                >
+
+                    ✅ Todo Comprado
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+
+    <!-- SCRIPTS -->
+
+    <script src="api.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,975 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #09090b 0%,
+            #18181b 45%,
+            #2e1065 100%
+        );
+
+    min-height:100vh;
+
+    color:white;
+
+    padding:20px;
+
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:
+        rgba(24,24,27,0.92);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:24px;
+
+    padding:20px 25px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.35),
+        0 10px 20px rgba(124,58,237,0.18);
+
+}
+
+
+/* =========================
+   LOGO AREA
+========================= */
+
+.logo-area h1{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    margin-bottom:6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #c084fc,
+            #f59e0b,
+            #fb923c
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+
+.logo-area p{
+
+    color:#d4d4d8;
+
+    font-size:14px;
+
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-navbar{
+
+    width:140px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:100px;
+
+    border:3px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 8px 20px rgba(249,115,22,0.15),
+        0 5px 15px rgba(168,85,247,0.15);
+
+    transition:0.25s;
+
+}
+
+
+.logo-navbar:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+/* =========================
+   VOLVER BTN
+========================= */
+
+.volver-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #27272a,
+            #3f3f46
+        );
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:0.25s;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+}
+
+
+.volver-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #3f3f46,
+            #52525b
+        );
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+.titulo{
+
+    text-align:center;
+
+    font-size:34px;
+
+    margin-bottom:30px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================
+   CARDS CONTAINER
+========================= */
+
+.cards-container{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:22px;
+
+}
+
+
+/* =========================
+   MENU CARDS
+========================= */
+
+.card{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        rgba(24,24,27,0.92);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:26px;
+
+    padding:35px 28px;
+
+    transition:0.28s;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.30);
+
+}
+
+
+.card:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.01);
+
+}
+
+
+/* =========================
+   CARD INVENTARIO
+========================= */
+
+.inventario-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(91,33,182,0.90),
+            rgba(24,24,27,0.95)
+        );
+
+}
+
+
+/* =========================
+   CARD FACTURAS
+========================= */
+
+.facturas-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(217,119,6,0.88),
+            rgba(24,24,27,0.95)
+        );
+
+}
+
+
+/* =========================
+   CARD BOLETAS
+========================= */
+
+.boletas-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(147,51,234,0.88),
+            rgba(24,24,27,0.95)
+        );
+
+}
+
+
+/* =========================
+   ICONO
+========================= */
+
+.icono{
+
+    font-size:58px;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =========================
+   TEXTOS CARD
+========================= */
+
+.card h3{
+
+    font-size:28px;
+
+    margin-bottom:14px;
+
+    font-weight:800;
+
+}
+
+
+.card p{
+
+    color:#e4e4e7;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.buscador-box{
+
+    margin-bottom:25px;
+
+}
+
+
+.buscador-box input{
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#27272a;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    border:2px solid transparent;
+
+    transition:0.25s;
+
+}
+
+
+.buscador-box input:focus{
+
+    border-color:#a855f7;
+
+    box-shadow:
+        0 0 15px rgba(168,85,247,0.25);
+
+}
+
+
+.buscador-box input::placeholder{
+
+    color:#a1a1aa;
+
+}
+
+
+/* =========================
+   ESTADO
+========================= */
+
+.estado-box{
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    background:
+        rgba(24,24,27,0.92);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#d4d4d8;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================
+   RESUMEN CARD
+========================= */
+
+.resumen-card{
+
+    background:
+        rgba(24,24,27,0.92);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.25);
+
+    transition:0.25s;
+
+}
+
+
+.resumen-card:hover{
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.card-header{
+
+    padding:18px 22px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #9333ea,
+            #f59e0b
+        );
+
+}
+
+
+/* =========================
+   CARD BODY
+========================= */
+
+.card-body{
+
+    padding:22px;
+
+}
+
+
+/* =========================
+   INFO ROW
+========================= */
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:12px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+}
+
+
+.info-row:last-child{
+
+    border-bottom:none;
+
+}
+
+
+/* =========================
+   INFO LABEL
+========================= */
+
+.info-label{
+
+    color:#a1a1aa;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================
+   INFO VALUE
+========================= */
+
+.info-value{
+
+    text-align:right;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+
+    .topbar{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:22px 18px;
+
+    }
+
+
+    .logo-navbar{
+
+        width:120px;
+
+        height:78px;
+
+    }
+
+
+    .logo-area h1{
+
+        font-size:26px;
+
+    }
+
+
+    .titulo{
+
+        font-size:28px;
+
+    }
+
+
+    .cards-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .card{
+
+        padding:30px 24px;
+
+    }
+
+
+    .card h3{
+
+        font-size:24px;
+
+    }
+
+
+    .icono{
+
+        font-size:52px;
+
+    }
+
+
+    .info-row{
+
+        flex-direction:column;
+
+        gap:8px;
+
+    }
+
+
+    .info-value{
+
+        text-align:left;
+
+    }
+
+}
+
+
+
+
+
+/* =========================
+   FACTURA HEADER
+========================= */
+
+.factura-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+/* =========================
+   TOGGLE BTN
+========================= */
+
+.toggle-btn{
+
+    border:none;
+
+    padding:10px 14px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:white;
+
+    transition:0.25s;
+
+    background:
+        linear-gradient(
+            135deg,
+            #27272a,
+            #3f3f46
+        );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+}
+
+
+.toggle-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #3f3f46,
+            #52525b
+        );
+
+}
+
+
+/* =========================
+   PRODUCTOS BOX
+========================= */
+
+.productos-box{
+
+    margin-top:18px;
+
+    padding-top:18px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================
+   PRODUCTO ITEM
+========================= */
+
+.producto-item{
+
+    padding:10px 0;
+
+    color:#e4e4e7;
+
+    font-size:14px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.05);
+
+}
+
+
+.producto-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+/* =========================
+   RESPONSIVE FACTURAS
+========================= */
+
+@media(max-width:700px){
+
+    .factura-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+
+    .toggle-btn{
+
+        width:100%;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   TABLA INVENTARIO
+========================= */
+
+.tabla-container{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    border-radius:22px;
+
+    background:
+        rgba(24,24,27,0.92);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.25);
+
+}
+
+
+.tabla-inventario{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:320px;
+
+}
+
+
+.tabla-inventario thead{
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #9333ea,
+            #f59e0b
+        );
+
+}
+
+
+.tabla-inventario th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:white;
+
+}
+
+
+.tabla-inventario td{
+
+    padding:16px 18px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    color:#f4f4f5;
+
+    font-size:14px;
+
+}
+
+
+.tabla-inventario tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+
+.tabla-inventario tbody tr{
+
+    transition:0.2s;
+
+}
+
+
+.tabla-inventario tbody tr:hover{
+
+    background:
+        rgba(255,255,255,0.03);
+
+}
+
+
+.stock-cell{
+
+    font-weight:800;
+
+    color:#facc15;
+
+}
+
+
+
+
+
+
+/* =========================
+   SELECT CATEGORIAS
+========================= */
+
+.buscador-input{
+
+  width:100%;
+
+  margin-top:12px;
+
+  padding:14px 16px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#1f2937;
+
+  color:white;
+
+  font-size:15px;
+
+  font-weight:500;
+
+  outline:none;
+
+  transition:0.2s;
+
+}
+
+
+/* =========================
+   FOCUS
+========================= */
+
+.buscador-input:focus{
+
+  background:#111827;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.buscador-input option{
+
+  background:#1f2937;
+
+  color:white;
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Facturas</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+  <!-- WORD -->
+
+  <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+    <a href="index.html"
+       class="nav-btn">
+
+      Volver
+
+    </a>
+
+
+    <h1>Facturas</h1>
+
+  </header>
+
+
+  <div class="container">
+
+    <h1 class="titulo">
+
+      Facturas Guardadas
+
+    </h1>
+
+
+    <!-- BUSCADOR -->
+
+    <div class="filtros">
+
+      <input type="text"
+             id="buscar"
+             placeholder="🔍 Buscar por proveedor o N° factura">
+
+    </div>
+
+
+    <!-- FACTURAS -->
+
+    <div id="facturas-container"></div>
+
+
+  </div>
+
+
+  <!-- TOAST -->
+
+  <div id="toast"
+       class="toast">
+
+  </div>
+
+
+  <!-- JS -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script src="js/api.js"></script>
+
+  <script src="js/utils.js"></script>
+
+  <script src="js/mostrar-facturas.js"></script>
+
+</body>
+</html>

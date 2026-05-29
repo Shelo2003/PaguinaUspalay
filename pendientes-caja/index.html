@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pendientes Caja</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         CONTAINER
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- =====================
+             LOGO
+        ====================== -->
+
+        <img src="../assets/logoUspa.jpeg"
+             class="logo">
+
+
+        <!-- =====================
+             TITULO
+        ====================== -->
+
+        <h1>
+            📋 Pedidos Local
+        </h1>
+
+
+        <p class="subtitulo">
+
+            Anota lo que haga falta
+            en el local
+
+        </p>
+
+
+
+        <!-- =====================
+             LISTA INPUTS
+        ====================== -->
+
+        <div id="listaPendientes">
+
+            <div class="pendiente-item">
+
+                <input
+                    type="text"
+                    class="input-pendiente"
+                    placeholder="Ej: Falta Coca Cola..."
+                >
+
+
+                <button
+                    class="btn-eliminar"
+                    onclick="eliminarInput(this)"
+                >
+
+                    ✕
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             BOTON AGREGAR
+        ====================== -->
+
+        <button
+            id="agregarBtn"
+        >
+
+            + Agregar Otro
+
+        </button>
+
+
+
+        <!-- =====================
+             BOTON ENVIAR
+        ====================== -->
+
+        <button
+            id="enviarBtn"
+        >
+
+            Enviar Pendientes
+
+        </button>
+
+
+
+        <!-- =====================
+             PEDIDOS GUARDADOS
+        ====================== -->
+
+        <div class="pedidos-box">
+
+            <h2>
+
+                🛒 Pedidos Enviados
+
+            </h2>
+
+
+            <div id="pedidosGuardados">
+
+                <div class="sin-pedidos">
+
+                    ✅ No hay pendientes
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             MENSAJE
+        ====================== -->
+
+        <div class="info-box">
+
+            Los pendientes enviados
+            llegarán automáticamente
+            al Jefe Claudio.
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         TOAST
+    ========================= -->
+
+    <div id="toast"
+         class="toast">
+
+    </div>
+
+
+
+    <!-- =========================
+         JS
+    ========================= -->
+
+    <script src="api.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

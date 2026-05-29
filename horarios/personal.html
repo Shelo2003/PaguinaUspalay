@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Personal Cocina</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <h1>Personal Cocina</h1>
+
+        <a href="index.html"
+           class="volver-btn">
+
+            Volver
+
+        </a>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="container">
+
+        <h2 class="titulo">
+            Administración de Personal
+        </h2>
+
+
+        <!-- AGREGAR PERSONA -->
+
+        <div class="card-personal">
+
+            <h3>
+                Agregar Persona
+            </h3>
+
+
+            <div class="agregar-persona-box">
+
+                <input type="text"
+                       id="nombrePersona"
+                       class="input-personal"
+                       placeholder="Nombre de la persona">
+
+
+                <button id="agregarPersonaBtn"
+                        class="guardar-btn">
+
+                    Agregar
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LISTA PERSONAL -->
+
+        <div class="card-personal">
+
+            <h3>
+                Lista de Personal
+            </h3>
+
+
+            <div id="listaPersonal"
+                 class="lista-personal">
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+
+    <div id="toast"
+         class="toast">
+
+    </div>
+
+
+    <!-- JS -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/personal.js"></script>
+
+</body>
+</html>

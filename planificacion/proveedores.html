@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Proveedores</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <h1>
+            🗓️ Proveedores
+        </h1>
+
+
+        <a href="../index.html"
+           class="volver-btn">
+
+            Volver al Portal
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================
+         BOTON PENDIENTES
+    ========================== -->
+
+    <div class="top-navigation">
+
+        <a href="index.html"
+           class="navigation-btn">
+
+            📋 Ver Pendientes
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTAINER
+    ========================== -->
+
+    <main class="container">
+
+
+        <section>
+
+
+            <div class="section-header">
+
+                <h2>
+                    Calendario de Proveedores
+                </h2>
+
+                <p>
+                    Organización de entrega de pedidos
+                </p>
+
+            </div>
+
+
+
+            <div class="calendario-grid">
+
+
+                <!-- LUNES -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Lunes
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Lunes"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Lunes"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Lunes"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MARTES -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Martes
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Martes"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Martes"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Martes"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MIERCOLES -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Miércoles
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Miércoles"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Miércoles"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Miércoles"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- JUEVES -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Jueves
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Jueves"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Jueves"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Jueves"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VIERNES -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Viernes
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Viernes"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Viernes"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Viernes"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SABADO -->
+
+                <div class="dia-card">
+
+                    <div class="dia-header">
+                        Sábado
+                    </div>
+
+                    <div
+                        class="lista-dia"
+                        id="Sábado"
+                    ></div>
+
+                    <div class="agregar-proveedor-box">
+
+                        <input
+                            type="text"
+                            placeholder="Agregar proveedor..."
+                            class="input-proveedor"
+                            data-dia="Sábado"
+                        >
+
+                        <button
+                            class="btn-agregar-proveedor"
+                            data-dia="Sábado"
+                        >
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="acciones-box">
+
+                <button
+                    id="guardarProveedoresBtn"
+                    class="guardar-btn"
+                >
+
+                    💾 Guardar Calendario
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+
+    <!-- SCRIPTS -->
+
+    <script src="api.js"></script>
+
+    <script src="proveedores.js"></script>
+
+</body>
+</html>

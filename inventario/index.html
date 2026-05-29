@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Inventario</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header class="topbar">
+
+
+        <a href="../index.html"
+           class="volver-btn">
+
+           Volver al Portal
+
+        </a>
+
+        <h1>Inventario</h1>
+
+        <button class="tab-btn"
+                data-tab="inventarioTabla">
+
+            Ver Inventario
+
+        </button>
+
+    </header>
+
+
+    <main class="contenedor">
+
+        <!-- PESTAÑAS -->
+
+        <div class="tabs">
+
+            <button class="tab-btn active"
+                    data-tab="modificar">
+
+                Modificar Producto
+
+            </button>
+
+
+            <button class="tab-btn"
+                    data-tab="agregar">
+
+                Agregar Producto
+
+            </button>
+
+
+            <button class="tab-btn"
+                    data-tab="categorias">
+
+                Categorías
+
+            </button>
+
+        </div>
+
+
+        <!-- MODIFICAR -->
+
+        <section id="modificar"
+                 class="tab-content active">
+
+            <div class="card">
+
+                <h2>Modificar Producto</h2>
+
+
+                <select id="categoriaModificarSelect"
+                        class="input">
+
+                    <option value="">
+                        Seleccionar categoría
+                    </option>
+
+                </select>
+
+
+                <select id="productoSelect"
+                        class="input">
+
+                    <option value="">
+                        Seleccionar producto
+                    </option>
+
+                </select>
+
+
+
+
+                <!-- CAMBIAR TOTAL -->
+
+                <div class="editar-total">
+
+                    <input type="number"
+                           id="nuevoTotal"
+                           placeholder="Nuevo total"
+                           class="input-small">
+
+                    <button class="btn editar"
+                            id="editarTotalBtn">
+
+                        Cambiar Total
+
+                    </button>
+
+                </div>
+
+
+                <!-- INFO PRODUCTO ABAJO -->
+
+                <div class="producto-box">
+
+                    <p>
+                        <strong>Producto:</strong>
+
+                        <span id="nombreProducto">
+                            Ninguno
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Stock actual:</strong>
+
+                        <span id="stockProducto">
+                            0
+                        </span>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AGREGAR PRODUCTO -->
+
+        <section id="agregar"
+                 class="tab-content">
+
+            <div class="card">
+
+                <h2>Agregar Producto</h2>
+
+
+                <input type="text"
+                       id="nombreProductoInput"
+                       placeholder="Nombre producto"
+                       class="input">
+
+
+                <select id="categoriaSelect"
+                        class="input">
+
+                    <option value="">
+                        Seleccionar categoría
+                    </option>
+
+                </select>
+
+
+                <input type="number"
+                       id="stockProductoInput"
+                       placeholder="Stock inicial"
+                       class="input">
+
+
+                <button class="btn agregar-btn"
+                        id="agregarProductoBtn">
+
+                    Agregar Producto
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORÍAS -->
+
+        <section id="categorias"
+                 class="tab-content">
+
+            <div class="card">
+
+                <h2>Categorías</h2>
+
+
+                <input type="text"
+                       id="nuevaCategoria"
+                       placeholder="Nueva categoría"
+                       class="input">
+
+
+                <button class="btn agregar-btn"
+                        id="agregarCategoriaBtn">
+
+                    Agregar Categoría
+
+                </button>
+
+
+                <div id="listaCategorias"
+                     class="lista-categorias">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INVENTARIO -->
+
+        <section id="inventarioTabla"
+                 class="tab-content">
+
+            <div class="card">
+
+                <h2>Inventario Completo</h2>
+
+
+                <select id="filtroCategoriaTabla"
+                        class="input">
+
+                    <option value="">
+                        Todas las categorías
+                    </option>
+
+                </select>
+
+
+                <div class="tabla-container">
+
+                    <table class="tabla-inventario">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Producto</th>
+
+                                <th>Categoría</th>
+
+                                <th>Stock</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tablaInventarioBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+
+    <div id="toast"
+         class="toast">
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

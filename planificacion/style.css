@@ -1,0 +1,860 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #09090b 0%,
+            #18181b 45%,
+            #78350f 100%
+        );
+
+    color:#f4f4f5;
+
+    padding:30px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.topbar{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.98),
+            rgba(39,39,42,0.98)
+        );
+
+    padding:22px 30px;
+
+    border-radius:24px;
+
+    margin-bottom:30px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35),
+        0 4px 12px rgba(245,158,11,0.10);
+
+}
+
+.topbar h1{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    font-size:30px;
+
+    color:white;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   BOTON VOLVER
+========================= */
+
+.volver-btn{
+
+    background:#f59e0b;
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:0.2s;
+}
+
+.volver-btn:hover{
+
+    background:#d97706;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    max-width:1400px;
+
+    margin:auto;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:30px;
+
+    flex-wrap:wrap;
+}
+
+.tab-btn{
+
+    border:none;
+
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    background:#27272a;
+
+    color:#fde68a;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    border:1px solid #3f3f46;
+}
+
+.tab-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#323238;
+}
+
+.tab-btn.active{
+
+    background:#f59e0b;
+
+    color:white;
+
+    box-shadow:
+        0 8px 20px rgba(245,158,11,0.20);
+}
+
+
+/* =========================
+   TAB CONTENT
+========================= */
+
+.tab-content{
+
+    display:none;
+}
+
+.tab-content.active{
+
+    display:block;
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header{
+
+    margin-bottom:25px;
+}
+
+.section-header h2{
+
+    font-size:32px;
+
+    color:#fafafa;
+
+    margin-bottom:8px;
+}
+
+.section-header p{
+
+    color:#d4d4d8;
+
+    font-size:15px;
+}
+
+
+/* =========================
+   AGREGAR BOX
+========================= */
+
+.agregar-box{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-bottom:25px;
+}
+
+.agregar-box input{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#27272a;
+
+    color:white;
+
+    font-size:15px;
+
+    border:1px solid #3f3f46;
+
+    outline:none;
+
+    transition:0.2s;
+}
+
+.agregar-box input:focus{
+
+    border-color:#f59e0b;
+
+    box-shadow:
+        0 0 0 3px rgba(245,158,11,0.15);
+}
+
+
+/* =========================
+   BOTON AGREGAR
+========================= */
+
+.agregar-btn{
+
+    border:none;
+
+    background:#f59e0b;
+
+    color:white;
+
+    padding:15px 22px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.agregar-btn:hover{
+
+    background:#d97706;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   LISTA PENDIENTES
+========================= */
+
+.lista-pendientes{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   ITEM PENDIENTE
+========================= */
+
+.pendiente-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+
+    transition:0.2s;
+}
+
+.pendiente-item:hover{
+
+    transform:translateY(-2px);
+
+    border-color:rgba(245,158,11,0.25);
+}
+
+.pendiente-texto{
+
+    font-size:16px;
+
+    color:#f4f4f5;
+
+    font-weight:500;
+}
+
+
+/* =========================
+   BOTON ELIMINAR
+========================= */
+
+.btn-eliminar-pendiente,
+.btn-eliminar-proveedor{
+
+    border:none;
+
+    background:#3f3f46;
+
+    color:white;
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    font-weight:bold;
+}
+
+.btn-eliminar-pendiente:hover,
+.btn-eliminar-proveedor:hover{
+
+    background:#ef4444;
+
+    transform:scale(1.05);
+}
+
+
+/* =========================
+   ACCIONES
+========================= */
+
+.acciones-box{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:10px;
+
+    flex-wrap:wrap;
+}
+
+
+/* =========================
+   BOTON GUARDAR
+========================= */
+
+.guardar-btn{
+
+    border:none;
+
+    background:#16a34a;
+
+    color:white;
+
+    padding:15px 24px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    box-shadow:
+        0 8px 20px rgba(34,197,94,0.18);
+}
+
+.guardar-btn:hover{
+
+    background:#15803d;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   BOTON VACIAR
+========================= */
+
+.vaciar-btn{
+
+    border:none;
+
+    background:#dc2626;
+
+    color:white;
+
+    padding:15px 24px;
+
+    border-radius:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,0.18);
+}
+
+.vaciar-btn:hover{
+
+    background:#b91c1c;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   CALENDARIO
+========================= */
+
+.calendario-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap:22px;
+}
+
+
+/* =========================
+   DIA CARD
+========================= */
+
+.dia-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,24,27,0.96),
+            rgba(39,39,42,0.96)
+        );
+
+    border-radius:22px;
+
+    padding:20px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.30);
+
+    transition:0.2s;
+}
+
+.dia-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:rgba(245,158,11,0.20);
+}
+
+
+/* =========================
+   HEADER DIA
+========================= */
+
+.dia-header{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#fbbf24;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================
+   LISTA DIA
+========================= */
+
+.lista-dia{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+    min-height:100px;
+}
+
+
+/* =========================
+   ITEM PROVEEDOR
+========================= */
+
+.proveedor-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#27272a;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    border:1px solid #3f3f46;
+
+    color:#f4f4f5;
+
+    font-weight:500;
+}
+
+
+/* =========================
+   AGREGAR PROVEEDOR
+========================= */
+
+.agregar-proveedor-box{
+
+    display:flex;
+
+    gap:10px;
+}
+
+.input-proveedor{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#27272a;
+
+    color:white;
+
+    border:1px solid #3f3f46;
+
+    outline:none;
+
+    transition:0.2s;
+}
+
+.input-proveedor:focus{
+
+    border-color:#f59e0b;
+
+    box-shadow:
+        0 0 0 3px rgba(245,158,11,0.15);
+}
+
+
+.btn-agregar-proveedor{
+
+    border:none;
+
+    background:#f59e0b;
+
+    color:white;
+
+    width:44px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    transition:0.2s;
+}
+
+.btn-agregar-proveedor:hover{
+
+    background:#d97706;
+
+    transform:scale(1.04);
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    background:#18181b;
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35);
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:0.3s;
+
+    z-index:9999;
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.toast.success{
+    background:#16a34a;
+}
+
+.toast.error{
+    background:#ef4444;
+}
+
+.toast.warning{
+    background:#f59e0b;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    body{
+
+        padding:15px;
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+    }
+
+    .topbar h1{
+
+        position:static;
+
+        transform:none;
+    }
+
+    .agregar-box{
+
+        flex-direction:column;
+    }
+
+    .acciones-box{
+
+        flex-direction:column;
+    }
+
+}
+
+
+
+
+
+
+
+.btn-completar{
+
+    border:none;
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:white;
+
+    min-width:120px;
+
+    transition:0.25s;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ff4c,
+            #00ff4c
+        );
+
+    box-shadow:
+        0 8px 18px rgba(124,58,237,0.25);
+
+}
+
+
+.btn-completar:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+
+    box-shadow:
+        0 12px 24px rgba(124,58,237,0.35);
+
+}
+
+
+.btn-completar:active{
+
+    transform:scale(0.98);
+
+}
+
+
+
+
+/* =========================
+   TOP NAVIGATION
+========================= */
+
+.top-navigation{
+
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:22px;
+
+  margin-bottom:12px;
+
+}
+
+
+/* =========================
+   BOTON NAVEGACION
+========================= */
+
+.navigation-btn{
+
+  background:
+    linear-gradient(
+      135deg,
+      #f97316,
+      #ea580c
+    );
+
+  color:white;
+
+  text-decoration:none;
+
+  padding:14px 24px;
+
+  border-radius:18px;
+
+  font-size:16px;
+
+  font-weight:700;
+
+  transition:0.2s;
+
+  box-shadow:
+      0 8px 20px rgba(249,115,22,0.20);
+
+}
+
+
+.navigation-btn:hover{
+
+  transform:translateY(-2px);
+
+}
