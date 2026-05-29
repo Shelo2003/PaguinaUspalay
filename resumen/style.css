@@ -1,193 +1,95 @@
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 body{
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-    background:
-        linear-gradient(
-            135deg,
-            #09090b 0%,
-            #18181b 45%,
-            #2e1065 100%
-        );
+    background:#f5f5f5;
 
-    min-height:100vh;
+    color:#333;
 
-    color:white;
-
-    padding:20px;
-
+    padding:30px;
 }
 
 
 /* =========================
-   TOPBAR
+   NAVBAR
 ========================= */
 
 .topbar{
 
-    width:100%;
+  position:relative;
 
-    max-width:1200px;
+  display:flex;
 
-    margin:auto;
+  justify-content:space-between;
 
-    margin-bottom:25px;
+  align-items:center;
 
-    display:flex;
+  background:white;
 
-    justify-content:space-between;
+  backdrop-filter:blur(10px);
 
-    align-items:center;
+  padding:20px 30px;
 
-    gap:20px;
+  border-radius:24px;
 
-    background:
-        rgba(24,24,27,0.92);
+  margin-bottom:25px;
 
-    backdrop-filter:blur(10px);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    border-radius:24px;
-
-    padding:20px 25px;
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.35),
-        0 10px 20px rgba(124,58,237,0.18);
+  box-shadow:
+      0 8px 20px rgba(0,0,0,0.06);
 
 }
 
+.topbar h1{
 
-/* =========================
-   LOGO AREA
-========================= */
+  position:absolute;
 
-.logo-area h1{
+  left:50%;
 
-    font-size:30px;
+  transform:translateX(-50%);
 
-    font-weight:800;
+  margin:0;
 
-    margin-bottom:6px;
+  font-size:30px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #c084fc,
-            #f59e0b,
-            #fb923c
-        );
+  color:#4c1d95;
 
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
+  font-weight:800;
 
 }
 
-
-.logo-area p{
-
-    color:#d4d4d8;
-
-    font-size:14px;
-
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
-.logo-navbar{
-
-    width:140px;
-
-    height:90px;
-
-    object-fit:cover;
-
-    border-radius:100px;
-
-    border:3px solid rgba(255,255,255,0.10);
-
-    box-shadow:
-        0 8px 20px rgba(249,115,22,0.15),
-        0 5px 15px rgba(168,85,247,0.15);
-
-    transition:0.25s;
-
-}
-
-
-.logo-navbar:hover{
-
-    transform:scale(1.03);
-
-}
-
-
-/* =========================
-   VOLVER BTN
-========================= */
 
 .volver-btn{
 
-    text-decoration:none;
+    background:#7c3aed;
 
     color:white;
 
-    background:
-        linear-gradient(
-            135deg,
-            #27272a,
-            #3f3f46
-        );
+    padding:12px 18px;
 
-    padding:14px 18px;
+    border-radius:12px;
 
-    border-radius:16px;
+    text-decoration:none;
 
-    font-size:14px;
+    font-weight:bold;
 
-    font-weight:700;
-
-    transition:0.25s;
-
-    border:1px solid rgba(255,255,255,0.08);
+    transition:0.2s;
 
 }
 
 
 .volver-btn:hover{
 
-    transform:
-        translateY(-2px);
+    background:#6d28d9;
 
-    background:
-        linear-gradient(
-            135deg,
-            #3f3f46,
-            #52525b
-        );
+    transform:translateY(-2px);
+
+    text-decoration:none;
 
 }
 
@@ -196,375 +98,523 @@ body{
    CONTAINER
 ========================= */
 
+.container,
+.contenedor{
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+
+/* =========================
+   TITULOS
+========================= */
+
+h1{
+    margin-bottom:25px;
+    font-size:32px;
+    color:#4c1d95;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#5b21b6;
+}
+
+.titulo{
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card,
 .container{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.06);
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#5b21b6;
+}
+
+.input,
+input{
 
     width:100%;
 
-    max-width:1200px;
+    padding:12px 15px;
 
-    margin:auto;
+    border:1px solid #e9d5ff;
 
-}
-
-
-/* =========================
-   TITULO
-========================= */
-
-.titulo{
-
-    text-align:center;
-
-    font-size:34px;
-
-    margin-bottom:30px;
-
-    font-weight:800;
-
-}
-
-
-/* =========================
-   CARDS CONTAINER
-========================= */
-
-.cards-container{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(280px,1fr));
-
-    gap:22px;
-
-}
-
-
-/* =========================
-   MENU CARDS
-========================= */
-
-.card{
-
-    text-decoration:none;
-
-    color:white;
-
-    background:
-        rgba(24,24,27,0.92);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    border-radius:26px;
-
-    padding:35px 28px;
-
-    transition:0.28s;
-
-    box-shadow:
-        0 15px 30px rgba(0,0,0,0.30);
-
-}
-
-
-.card:hover{
-
-    transform:
-        translateY(-6px)
-        scale(1.01);
-
-}
-
-
-/* =========================
-   CARD INVENTARIO
-========================= */
-
-.inventario-card{
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(91,33,182,0.90),
-            rgba(24,24,27,0.95)
-        );
-
-}
-
-
-/* =========================
-   CARD FACTURAS
-========================= */
-
-.facturas-card{
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(217,119,6,0.88),
-            rgba(24,24,27,0.95)
-        );
-
-}
-
-
-/* =========================
-   CARD BOLETAS
-========================= */
-
-.boletas-card{
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(147,51,234,0.88),
-            rgba(24,24,27,0.95)
-        );
-
-}
-
-
-/* =========================
-   ICONO
-========================= */
-
-.icono{
-
-    font-size:58px;
-
-    margin-bottom:20px;
-
-}
-
-
-/* =========================
-   TEXTOS CARD
-========================= */
-
-.card h3{
-
-    font-size:28px;
-
-    margin-bottom:14px;
-
-    font-weight:800;
-
-}
-
-
-.card p{
-
-    color:#e4e4e7;
-
-    line-height:1.6;
+    border-radius:12px;
 
     font-size:15px;
 
+    transition:0.2s;
+
+    margin-bottom:18px;
+
+    background:white;
 }
 
-
-/* =========================
-   BUSCADOR
-========================= */
-
-.buscador-box{
-
-    margin-bottom:25px;
-
-}
-
-
-.buscador-box input{
-
-    width:100%;
-
-    padding:18px 20px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:#27272a;
-
-    color:white;
-
-    font-size:16px;
+.input:focus,
+input:focus{
 
     outline:none;
-
-    border:2px solid transparent;
-
-    transition:0.25s;
-
-}
-
-
-.buscador-box input:focus{
 
     border-color:#a855f7;
 
     box-shadow:
-        0 0 15px rgba(168,85,247,0.25);
-
-}
-
-
-.buscador-box input::placeholder{
-
-    color:#a1a1aa;
-
+        0 0 0 3px
+        rgba(168,85,247,0.15);
 }
 
 
 /* =========================
-   ESTADO
+   BOTONES
 ========================= */
 
-.estado-box{
+.btn,
+button{
 
-    text-align:center;
+    border:none;
 
-    padding:25px;
+    border-radius:12px;
+
+    padding:12px 18px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:0.2s;
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+}
+
+button:disabled{
+
+    opacity:0.6;
+
+    cursor:not-allowed;
+}
+
+
+/* BOTONES INVENTARIO */
+
+.editar{
+    background:#2563eb;
+}
+
+.agregar-btn{
+    background:#2563eb;
+}
+
+
+/* BOTONES FACTURA */
+
+#agregar-producto{
+
+    background:#2563eb;
+
+    color:white;
+
+    margin-top:10px;
+}
+
+#agregar-producto:hover{
+    background:#1d4ed8;
+}
+
+#guardar-factura{
+
+    background:#059669;
+
+    color:white;
+
+    margin-top:20px;
+
+    width:100%;
+
+    font-size:16px;
+
+    font-weight:bold;
+}
+
+#guardar-factura:hover{
+    background:#047857;
+}
+
+.nav-btn{
+
+    display:inline-block;
+
+    padding:12px 20px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    transition:0.2s;
+
+    margin-top:20px;
+}
+
+.nav-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+    text-decoration:none;
+}
+
+
+/* =========================
+   PRODUCTOS FACTURA
+========================= */
+
+.producto{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr auto;
+
+    gap:10px;
+
+    margin-bottom:15px;
+
+    align-items:center;
+}
+
+.producto button{
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:12px;
+}
+
+.producto button:hover{
+    background:#dc2626;
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+#total{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#27272a;
+
+    border-radius:14px;
+
+    font-size:24px;
+
+    color:#93c5fd;
+
+    font-weight:bold;
+
+    border:1px solid #3f3f46;
+}
+
+
+/* =========================
+   PRODUCTO BOX
+========================= */
+
+.producto-box{
+
+    background:white;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    margin-bottom:25px;
+
+    border:1px solid #e5e7eb;
+}
+
+.producto-box p{
+    margin-bottom:8px;
+    color:#374151;
+}
+
+
+/* =========================
+   ACCIONES
+========================= */
+
+.acciones-stock,
+.editar-total{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+}
+
+
+/* =========================
+   FACTURAS
+========================= */
+
+.factura-card{
+
+    background:white;
 
     border-radius:20px;
 
     margin-bottom:20px;
 
-    background:
-        rgba(24,24,27,0.92);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    color:#d4d4d8;
-
-    font-size:16px;
-
-    font-weight:600;
-
-}
-
-
-/* =========================
-   RESUMEN CARD
-========================= */
-
-.resumen-card{
-
-    background:
-        rgba(24,24,27,0.92);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    border-radius:24px;
+    padding:0;
 
     overflow:hidden;
 
+    border-left:6px solid #2563eb;
+
+    border:1px solid #e5e7eb;
+
+    transition:0.2s;
+
     box-shadow:
-        0 12px 25px rgba(0,0,0,0.25);
-
-    transition:0.25s;
-
+        0 8px 20px rgba(0,0,0,0.06);
 }
 
+.factura-card:hover{
 
-.resumen-card:hover{
+    transform:translateY(-3px);
 
-    transform:
-        translateY(-4px);
+    border-color:rgba(37,99,235,0.30);
 
+    box-shadow:
+        0 12px 24px rgba(0,0,0,0.10);
 }
 
+.factura-header{
 
-/* =========================
-   CARD HEADER
-========================= */
+    background:#f8fafc;
 
-.card-header{
-
-    padding:18px 22px;
-
-    font-size:18px;
-
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c3aed,
-            #9333ea,
-            #f59e0b
-        );
-
-}
-
-
-/* =========================
-   CARD BODY
-========================= */
-
-.card-body{
-
-    padding:22px;
-
-}
-
-
-/* =========================
-   INFO ROW
-========================= */
-
-.info-row{
+    padding:18px;
 
     display:flex;
 
     justify-content:space-between;
 
-    gap:20px;
+    flex-wrap:wrap;
 
-    padding:12px 0;
+    gap:10px;
 
-    border-bottom:
-        1px solid rgba(255,255,255,0.06);
+    cursor:pointer;
 
+    transition:0.2s;
+}
+
+.factura-header:hover{
+    background:#eff6ff;
+}
+
+.factura-header div{
+    font-size:15px;
+    color:#111827;
+}
+
+.factura-detalle{
+
+    padding:20px;
+
+    border-top:1px solid #e5e7eb;
+
+    color:#374151;
 }
 
 
-.info-row:last-child{
+/* =========================
+   TABLAS
+========================= */
+
+.tabla-container{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    margin-top:20px;
+}
+
+.tabla-inventario,
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:10px;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:1px solid #e5e7eb;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.06);
+}
+
+.tabla-inventario thead,
+th{
+
+    background:#2563eb;
+
+    color:white;
+}
+
+.tabla-inventario th,
+th{
+
+    padding:16px;
+
+    text-align:left;
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+.tabla-inventario td,
+td{
+
+    padding:14px 16px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    font-size:14px;
+
+    color:#374151;
+}
+
+.tabla-inventario tbody tr,
+tr{
+
+    transition:0.2s;
+}
+
+.tabla-inventario tbody tr:hover,
+tr:hover td{
+
+    background:#f8fafc;
+}
+
+.tabla-inventario tbody tr:last-child td{
 
     border-bottom:none;
-
 }
 
 
 /* =========================
-   INFO LABEL
+   STOCK
 ========================= */
 
-.info-label{
+.tabla-inventario td:last-child{
 
-    color:#a1a1aa;
+    font-weight:bold;
 
-    font-size:14px;
-
-    font-weight:700;
-
+    color:#059669;
 }
 
 
 /* =========================
-   INFO VALUE
+   TOAST
 ========================= */
 
-.info-value{
+.toast{
 
-    text-align:right;
+    position:fixed;
 
-    font-size:14px;
+    bottom:20px;
 
-    font-weight:700;
+    right:20px;
+
+    background:#111827;
 
     color:white;
 
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:0.3s;
+}
+
+.toast.show{
+
+    opacity:1;
+}
+
+.toast.success{
+
+    background:#16a34a;
+}
+
+.toast.error{
+
+    background:#dc2626;
+}
+
+.toast.warning{
+
+    background:#f59e0b;
 }
 
 
@@ -575,401 +625,63 @@ body{
 @media(max-width:700px){
 
     body{
-
         padding:15px;
-
     }
 
+    .container{
+        padding:20px;
+    }
+
+    .producto{
+        grid-template-columns:1fr;
+    }
+
+    .factura-header{
+        flex-direction:column;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+    th,
+    td{
+        padding:10px;
+    }
 
     .topbar{
 
         flex-direction:column;
 
-        text-align:center;
+        align-items:center;
+
+        justify-content:center;
+
+        gap:18px;
 
         padding:22px 18px;
 
+        text-align:center;
     }
 
+    .topbar h1{
 
-    .logo-navbar{
+        position:static;
 
-        width:120px;
-
-        height:78px;
-
-    }
-
-
-    .logo-area h1{
-
-        font-size:26px;
-
-    }
-
-
-    .titulo{
-
-        font-size:28px;
-
-    }
-
-
-    .cards-container{
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .card{
-
-        padding:30px 24px;
-
-    }
-
-
-    .card h3{
+        transform:none;
 
         font-size:24px;
 
+        line-height:1.3;
+
+        width:100%;
     }
 
-
-    .icono{
-
-        font-size:52px;
-
-    }
-
-
-    .info-row{
-
-        flex-direction:column;
-
-        gap:8px;
-
-    }
-
-
-    .info-value{
-
-        text-align:left;
-
-    }
-
-}
-
-
-
-
-
-/* =========================
-   FACTURA HEADER
-========================= */
-
-.factura-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-}
-
-
-/* =========================
-   TOGGLE BTN
-========================= */
-
-.toggle-btn{
-
-    border:none;
-
-    padding:10px 14px;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    color:white;
-
-    transition:0.25s;
-
-    background:
-        linear-gradient(
-            135deg,
-            #27272a,
-            #3f3f46
-        );
-
-    border:1px solid rgba(255,255,255,0.08);
-
-}
-
-
-.toggle-btn:hover{
-
-    transform:
-        translateY(-2px);
-
-    background:
-        linear-gradient(
-            135deg,
-            #3f3f46,
-            #52525b
-        );
-
-}
-
-
-/* =========================
-   PRODUCTOS BOX
-========================= */
-
-.productos-box{
-
-    margin-top:18px;
-
-    padding-top:18px;
-
-    border-top:
-        1px solid rgba(255,255,255,0.08);
-
-}
-
-
-/* =========================
-   PRODUCTO ITEM
-========================= */
-
-.producto-item{
-
-    padding:10px 0;
-
-    color:#e4e4e7;
-
-    font-size:14px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.05);
-
-}
-
-
-.producto-item:last-child{
-
-    border-bottom:none;
-
-}
-
-
-/* =========================
-   RESPONSIVE FACTURAS
-========================= */
-
-@media(max-width:700px){
-
-    .factura-header{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-    }
-
-
-    .toggle-btn{
+    .volver-btn{
 
         width:100%;
 
+        text-align:center;
     }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   TABLA INVENTARIO
-========================= */
-
-.tabla-container{
-
-    width:100%;
-
-    overflow-x:auto;
-
-    border-radius:22px;
-
-    background:
-        rgba(24,24,27,0.92);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-        0 12px 25px rgba(0,0,0,0.25);
-
-}
-
-
-.tabla-inventario{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    min-width:320px;
-
-}
-
-
-.tabla-inventario thead{
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c3aed,
-            #9333ea,
-            #f59e0b
-        );
-
-}
-
-
-.tabla-inventario th{
-
-    padding:18px;
-
-    text-align:left;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    color:white;
-
-}
-
-
-.tabla-inventario td{
-
-    padding:16px 18px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.06);
-
-    color:#f4f4f5;
-
-    font-size:14px;
-
-}
-
-
-.tabla-inventario tr:last-child td{
-
-    border-bottom:none;
-
-}
-
-
-.tabla-inventario tbody tr{
-
-    transition:0.2s;
-
-}
-
-
-.tabla-inventario tbody tr:hover{
-
-    background:
-        rgba(255,255,255,0.03);
-
-}
-
-
-.stock-cell{
-
-    font-weight:800;
-
-    color:#facc15;
-
-}
-
-
-
-
-
-
-/* =========================
-   SELECT CATEGORIAS
-========================= */
-
-.buscador-input{
-
-  width:100%;
-
-  margin-top:12px;
-
-  padding:14px 16px;
-
-  border:none;
-
-  border-radius:14px;
-
-  background:#1f2937;
-
-  color:white;
-
-  font-size:15px;
-
-  font-weight:500;
-
-  outline:none;
-
-  transition:0.2s;
-
-}
-
-
-/* =========================
-   FOCUS
-========================= */
-
-.buscador-input:focus{
-
-  background:#111827;
-
-  box-shadow:
-    0 0 0 2px
-    rgba(255,255,255,0.08);
-
-}
-
-
-/* =========================
-   OPTIONS
-========================= */
-
-.buscador-input option{
-
-  background:#1f2937;
-
-  color:white;
 
 }
