@@ -12,6 +12,106 @@ let boletasGlobal = [];
 
 
 // =========================
+// BLOQUEAR ACCIONES
+// =========================
+
+function bloquearAcciones(
+
+  texto = "Procesando..."
+
+){
+
+  document.body.style.opacity =
+    "0.6";
+
+  document.body.style.pointerEvents =
+    "none";
+
+
+  document
+    .querySelectorAll("button")
+    .forEach(btn => {
+
+      btn.disabled = true;
+
+    });
+
+
+  const overlay =
+    document.createElement("div");
+
+  overlay.id =
+    "overlay-bloqueo";
+
+
+  overlay.innerHTML = `
+
+    <div style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      backdrop-filter: blur(3px);
+    ">
+
+      ⏳ ${texto}
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    overlay
+  );
+
+}
+
+
+// =========================
+// DESBLOQUEAR ACCIONES
+// =========================
+
+function desbloquearAcciones(){
+
+  document.body.style.opacity =
+    "1";
+
+  document.body.style.pointerEvents =
+    "auto";
+
+
+  document
+    .querySelectorAll("button")
+    .forEach(btn => {
+
+      btn.disabled = false;
+
+    });
+
+
+  const overlay =
+    document.getElementById(
+      "overlay-bloqueo"
+    );
+
+
+  if(overlay){
+
+    overlay.remove();
+
+  }
+
+}
+
+
+// =========================
 // CARGAR
 // =========================
 
@@ -453,21 +553,9 @@ function renderBoleta(
 
       try{
 
-        const botonesEliminar =
-          document.querySelectorAll(
-            ".btn-eliminar"
-          );
-
-
-        botonesEliminar.forEach(btn => {
-
-          btn.disabled = true;
-
-        });
-
-
-        btnEliminar.disabled =
-          true;
+        bloquearAcciones(
+          "Eliminando boleta..."
+        );
 
 
         btnEliminar.innerText =
@@ -502,6 +590,9 @@ function renderBoleta(
         console.log(error);
 
       }
+
+
+      desbloquearAcciones();
 
     }
   );

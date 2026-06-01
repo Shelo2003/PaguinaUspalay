@@ -23,6 +23,108 @@ const totalTexto =
 
 
 // =========================
+// BLOQUEAR FORMULARIO
+// =========================
+
+function bloquearFormulario(){
+
+  document.body.style.opacity =
+    "0.6";
+
+
+  document.body.style.pointerEvents =
+    "none";
+
+
+  guardarBoletaBtn.disabled =
+    true;
+
+
+  guardarBoletaBtn.innerText =
+
+    boletaEditandoId
+      ? "Actualizando..."
+      : "Guardando...";
+
+
+  const overlay =
+    document.createElement("div");
+
+  overlay.id =
+    "overlay-carga";
+
+
+  overlay.innerHTML = `
+
+    <div style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      backdrop-filter: blur(3px);
+    ">
+
+      ⏳ Guardando boleta...
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    overlay
+  );
+
+}
+
+
+// =========================
+// DESBLOQUEAR FORMULARIO
+// =========================
+
+function desbloquearFormulario(){
+
+  document.body.style.opacity =
+    "1";
+
+
+  document.body.style.pointerEvents =
+    "auto";
+
+
+  guardarBoletaBtn.disabled =
+    false;
+
+
+  guardarBoletaBtn.innerText =
+
+    boletaEditandoId
+      ? "Actualizar Boleta"
+      : "Guardar Boleta";
+
+
+  const overlay =
+    document.getElementById(
+      "overlay-carga"
+    );
+
+
+  if(overlay){
+
+    overlay.remove();
+
+  }
+
+}
+
+
+// =========================
 // CREAR FILA PRODUCTO
 // =========================
 
@@ -168,27 +270,82 @@ guardarBoletaBtn
     async () => {
 
 
+      const fecha =
+        document
+          .getElementById(
+            "fecha"
+          )
+          .value;
+
+
+      const productosHTML =
+        document
+          .querySelectorAll(
+            ".producto"
+          );
+
+
+      // =====================
+      // VALIDAR FECHA
+      // =====================
+
+      if(!fecha.trim()){
+
+        showToast(
+          "Seleccione fecha",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      // =====================
+      // VALIDAR PRODUCTOS
+      // =====================
+
+      const tieneProductoValido =
+        Array.from(productosHTML)
+          .some(producto => {
+
+            const nombre =
+              producto
+                .querySelector(".nombre")
+                .value
+                .trim();
+
+            const precio =
+              producto
+                .querySelector(".precio")
+                .value
+                .trim();
+
+            return (
+              nombre !== "" ||
+              precio !== ""
+            );
+
+          });
+
+
+      if(!tieneProductoValido){
+
+        showToast(
+          "Agregue al menos 1 producto",
+          "error"
+        );
+
+        return;
+
+      }
+
+
       // =====================
       // BLOQUEAR FORMULARIO
       // =====================
 
-      document.body.style.opacity =
-        "0.6";
-
-
-      document.body.style.pointerEvents =
-        "none";
-
-
-      guardarBoletaBtn.disabled =
-        true;
-
-
-      guardarBoletaBtn.innerText =
-
-        boletaEditandoId
-          ? "Actualizando..."
-          : "Guardando...";
+      bloquearFormulario();
 
 
       const lugar_compra =
@@ -205,21 +362,6 @@ guardarBoletaBtn
             "numero_boleta"
           )
           .value;
-
-
-      const fecha =
-        document
-          .getElementById(
-            "fecha"
-          )
-          .value;
-
-
-      const productosHTML =
-        document
-          .querySelectorAll(
-            ".producto"
-          );
 
 
       const productos = [];
@@ -337,23 +479,7 @@ guardarBoletaBtn
       // DESBLOQUEAR
       // =====================
 
-      document.body.style.opacity =
-        "1";
-
-
-      document.body.style.pointerEvents =
-        "auto";
-
-
-      guardarBoletaBtn.disabled =
-        false;
-
-
-      guardarBoletaBtn.innerText =
-
-        boletaEditandoId
-          ? "Actualizar Boleta"
-          : "Guardar Boleta";
+      desbloquearFormulario();
 
     }
   );

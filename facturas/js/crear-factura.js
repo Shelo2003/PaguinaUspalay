@@ -79,6 +79,84 @@ const agregarProveedorBtn =
 
 
 // =========================
+// PANTALLA CARGA
+// =========================
+
+function mostrarCargaInicial(){
+
+  document.body.style.opacity =
+    "0.5";
+
+  document.body.style.pointerEvents =
+    "none";
+
+
+  const loading =
+    document.createElement("div");
+
+  loading.id =
+    "pantalla-carga";
+
+
+  loading.innerHTML = `
+
+    <div style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      backdrop-filter: blur(3px);
+    ">
+
+      ⏳ Cargando datos...
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    loading
+  );
+
+}
+
+
+// =========================
+// OCULTAR CARGA
+// =========================
+
+function ocultarCargaInicial(){
+
+  document.body.style.opacity =
+    "1";
+
+  document.body.style.pointerEvents =
+    "auto";
+
+
+  const loading =
+    document.getElementById(
+      "pantalla-carga"
+    );
+
+
+  if(loading){
+
+    loading.remove();
+
+  }
+
+}
+
+
+// =========================
 // BLOQUEAR FACTURA
 // =========================
 
@@ -254,6 +332,11 @@ async function cargarProveedores(){
   }catch(error){
 
     console.log(error);
+
+    showToast(
+      "Error cargando proveedores",
+      "error"
+    );
 
   }
 
@@ -572,6 +655,94 @@ guardarFacturaBtn
           .querySelectorAll(".producto");
 
 
+      // =========================
+      // VALIDAR CAMPOS
+      // =========================
+
+      if(!proveedor.trim()){
+
+        showToast(
+          "Seleccione proveedor",
+          "error"
+        );
+
+        desbloquearFormularioFactura();
+
+        return;
+
+      }
+
+
+      if(!numero_factura.trim()){
+
+        showToast(
+          "Ingrese número de factura",
+          "error"
+        );
+
+        desbloquearFormularioFactura();
+
+        return;
+
+      }
+
+
+      if(!fecha.trim()){
+
+        showToast(
+          "Seleccione fecha",
+          "error"
+        );
+
+        desbloquearFormularioFactura();
+
+        return;
+
+      }
+
+
+      // =========================
+      // VALIDAR PRODUCTOS
+      // =========================
+
+      const tieneProductoValido =
+        Array.from(productosHTML)
+          .some(producto => {
+
+            const nombre =
+              producto
+                .querySelector(".nombre")
+                .value
+                .trim();
+
+            const precio =
+              producto
+                .querySelector(".precio")
+                .value
+                .trim();
+
+            return (
+              nombre !== "" ||
+              precio !== ""
+            );
+
+          });
+
+
+      if(!tieneProductoValido){
+
+        showToast(
+          "Agregue al menos 1 producto",
+          "error"
+        );
+
+        desbloquearFormularioFactura();
+
+        return;
+
+      }
+
+
       const productos = [];
 
 
@@ -765,6 +936,9 @@ function(factura){
 
 window.addEventListener("load", async () => {
 
+  mostrarCargaInicial();
+
+
   await cargarProveedores();
 
 
@@ -774,20 +948,24 @@ window.addEventListener("load", async () => {
     );
 
 
-  if(!data) return;
+  if(data){
+
+    const factura =
+      JSON.parse(data);
 
 
-  const factura =
-    JSON.parse(data);
+    cargarFacturaParaEditar(
+      factura
+    );
 
 
-  cargarFacturaParaEditar(
-    factura
-  );
+    localStorage.removeItem(
+      "facturaEditar"
+    );
+
+  }
 
 
-  localStorage.removeItem(
-    "facturaEditar"
-  );
+  ocultarCargaInicial();
 
 });
