@@ -303,4 +303,73 @@ body{
 
 
 
+/* =========================
+PANTALLA CARGA
+========================= */
+
+#pantallaCarga{
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 999999;
+
+}
+
+
+.loader-box{
+
+    text-align: center;
+
+    color: white;
+
+}
+
+
+.loader-logo{
+
+    width: 110px;
+
+    height: 110px;
+
+    border-radius: 30px;
+
+    object-fit: cover;
+
+    margin-bottom: 20px;
+
+}
+
+
+#pantallaCarga h2{
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+
+}
+
+
+#textoCarga{
+
+    opacity: 0.8;
+
+    font-size: 16px;
+
+}
+
+
+
+
+
+
 
