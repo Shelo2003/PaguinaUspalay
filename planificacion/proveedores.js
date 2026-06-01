@@ -1,4 +1,3 @@
-
 // =====================================================
 // CALENDARIO PROVEEDORES
 // =====================================================
@@ -13,6 +12,86 @@ const calendario = {
   Sábado:[]
 
 };
+
+
+// =========================
+// PANTALLA CARGA
+// =========================
+
+function mostrarCargaInicial(){
+
+  document.body.style.opacity =
+    "0.6";
+
+
+  document.body.style.pointerEvents =
+    "none";
+
+
+  const overlay =
+    document.createElement("div");
+
+  overlay.id =
+    "overlay-carga";
+
+
+  overlay.innerHTML = `
+
+    <div style="
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      backdrop-filter: blur(3px);
+    ">
+
+      ⏳ Cargando calendario...
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    overlay
+  );
+
+}
+
+
+// =========================
+// OCULTAR CARGA
+// =========================
+
+function ocultarCargaInicial(){
+
+  document.body.style.opacity =
+    "1";
+
+
+  document.body.style.pointerEvents =
+    "auto";
+
+
+  const overlay =
+    document.getElementById(
+      "overlay-carga"
+    );
+
+
+  if(overlay){
+
+    overlay.remove();
+
+  }
+
+}
 
 
 // =========================
@@ -114,9 +193,7 @@ function agregarProveedor(dia){
 
   renderCalendario();
 
-
 }
-
 
 
 // =========================
@@ -211,7 +288,6 @@ function renderCalendario(){
                     "Proveedor eliminado",
                     "success"
                   );
-
 
                 }
               );
@@ -364,4 +440,15 @@ async function cargarCalendario(){
 // INIT
 // =====================================================
 
-cargarCalendario();
+window.addEventListener(
+  "load",
+  async () => {
+
+    mostrarCargaInicial();
+
+    await cargarCalendario();
+
+    ocultarCargaInicial();
+
+  }
+);

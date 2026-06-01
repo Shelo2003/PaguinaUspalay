@@ -4,6 +4,86 @@ const tabContents = document.querySelectorAll('.tab-content');
 
 
 // =========================
+// PANTALLA CARGA
+// =========================
+
+function mostrarCargaInicial(){
+
+    document.body.style.opacity =
+        "0.6";
+
+
+    document.body.style.pointerEvents =
+        "none";
+
+
+    const overlay =
+        document.createElement("div");
+
+    overlay.id =
+        "overlay-carga";
+
+
+    overlay.innerHTML = `
+
+        <div style="
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            backdrop-filter: blur(3px);
+        ">
+
+            ⏳ Cargando inventario...
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+}
+
+
+// =========================
+// OCULTAR CARGA
+// =========================
+
+function ocultarCargaInicial(){
+
+    document.body.style.opacity =
+        "1";
+
+
+    document.body.style.pointerEvents =
+        "auto";
+
+
+    const overlay =
+        document.getElementById(
+            "overlay-carga"
+        );
+
+
+    if(overlay){
+
+        overlay.remove();
+
+    }
+
+}
+
+
+// =========================
 // PESTAÑAS
 // =========================
 
@@ -53,8 +133,15 @@ let productos = [];
 // ELEMENTOS
 // =========================
 
-const productoSelect =
-    document.getElementById('productoSelect');
+const productoInput =
+    document.getElementById(
+        'productoInput'
+    );
+
+const productosDatalist =
+    document.getElementById(
+        'productosDatalist'
+    );
 
 const categoriaSelect =
     document.getElementById('categoriaSelect');
@@ -266,11 +353,7 @@ function cargarFiltroTabla(){
 
 function cargarProductos(categoriaSeleccionada = ""){
 
-    productoSelect.innerHTML = `
-        <option value="">
-            Seleccionar producto
-        </option>
-    `;
+    productosDatalist.innerHTML = "";
 
 
     let productosFiltrados =
@@ -294,11 +377,10 @@ function cargarProductos(categoriaSeleccionada = ""){
         const option =
             document.createElement('option');
 
-        option.value = producto.id;
+        option.value =
+            producto.nombre;
 
-        option.textContent = producto.nombre;
-
-        productoSelect.appendChild(option);
+        productosDatalist.appendChild(option);
 
     });
 
@@ -393,14 +475,22 @@ categoriaModificarSelect.addEventListener('change', () => {
 // MOSTRAR PRODUCTO
 // =========================
 
-productoSelect.addEventListener('change', () => {
+productoInput.addEventListener('input', () => {
 
-    const id =
-        Number(productoSelect.value);
+    const nombreBuscado =
+        productoInput.value
+        .trim()
+        .toLowerCase();
 
 
     const producto =
-        productos.find(p => p.id == id);
+        productos.find(p => {
+
+            return p.nombre
+                .toLowerCase() ===
+                nombreBuscado;
+
+        });
 
 
     if(producto){
@@ -435,7 +525,7 @@ productoSelect.addEventListener('change', () => {
 
 function resetearModificarProducto(){
 
-    productoSelect.value = "";
+    productoInput.value = "";
 
     nombreProducto.textContent =
         "Ninguno";
@@ -448,10 +538,6 @@ function resetearModificarProducto(){
 }
 
 
-// =========================
-// BLOQUEAR BOTÓN
-// =========================
-
 function bloquearBoton(boton){
 
     boton.disabled = true;
@@ -460,10 +546,6 @@ function bloquearBoton(boton){
 
 }
 
-
-// =========================
-// DESBLOQUEAR BOTÓN
-// =========================
 
 function desbloquearBoton(boton){
 
@@ -617,7 +699,7 @@ function bloquearModificarProducto(){
     categoriaModificarSelect.disabled =
         true;
 
-    productoSelect.disabled =
+    productoInput.disabled =
         true;
 
     nuevoTotal.disabled =
@@ -627,7 +709,7 @@ function bloquearModificarProducto(){
     categoriaModificarSelect.style.opacity =
         "0.6";
 
-    productoSelect.style.opacity =
+    productoInput.style.opacity =
         "0.6";
 
     nuevoTotal.style.opacity =
@@ -655,7 +737,7 @@ function desbloquearModificarProducto(){
     categoriaModificarSelect.disabled =
         false;
 
-    productoSelect.disabled =
+    productoInput.disabled =
         false;
 
     nuevoTotal.disabled =
@@ -665,7 +747,7 @@ function desbloquearModificarProducto(){
     categoriaModificarSelect.style.opacity =
         "1";
 
-    productoSelect.style.opacity =
+    productoInput.style.opacity =
         "1";
 
     nuevoTotal.style.opacity =
@@ -863,19 +945,32 @@ editarTotalBtn.addEventListener('click', async () => {
 
     bloquearModificarProducto();
 
-    const id =
-        Number(productoSelect.value);
+    const nombreBuscado =
+        productoInput.value
+        .trim()
+        .toLowerCase();
+
+
+    const producto =
+        productos.find(p => {
+
+            return p.nombre
+                .toLowerCase() ===
+                nombreBuscado;
+
+        });
+
 
     const total =
         Number(nuevoTotal.value);
 
 
-    if(!id){
+    if(!producto){
 
         desbloquearModificarProducto();
 
         showToast(
-            "Seleccione producto",
+            "Seleccione producto válido",
             "error"
         );
 
@@ -908,7 +1003,7 @@ editarTotalBtn.addEventListener('click', async () => {
 
                 accion: "cambiarTotal",
 
-                id,
+                id: producto.id,
                 total
 
             })
@@ -947,6 +1042,19 @@ editarTotalBtn.addEventListener('click', async () => {
 // INICIAR
 // =========================
 
-obtenerDatos();
+window.addEventListener(
+    "load",
+    async () => {
 
-console.log("Inventario conectado correctamente");
+        mostrarCargaInicial();
+
+        await obtenerDatos();
+
+        ocultarCargaInicial();
+
+        console.log(
+            "Inventario conectado correctamente"
+        );
+
+    }
+);
