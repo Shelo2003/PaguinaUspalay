@@ -11,6 +11,13 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <link rel="manifest" href="/PaguinaUspalay/manifest.json">
+
+    <meta
+        name="theme-color"
+        content="#2563eb"
+    >
+
 </head>
 
 <body>
@@ -142,6 +149,27 @@
 
 
     <script src="script.js"></script>
+
+    <script>
+
+    if("serviceWorker" in navigator){
+
+    navigator.serviceWorker
+        .register(
+        "/PaguinaUspalay/service-worker.js"
+        )
+
+        .then(() => {
+
+        console.log(
+            "Service Worker OK"
+        );
+
+        });
+
+    }
+
+    </script>
 
 </body>
 </html>
