@@ -1161,7 +1161,7 @@ function exportarPDFDia(
 
 
 // =========================
-// BUSCADOR
+// BUSCADOR SOLO FECHA
 // =========================
 
 buscador.addEventListener(
@@ -1169,24 +1169,170 @@ buscador.addEventListener(
   () => {
 
     const valor =
-      buscador.value
-        .toLowerCase();
+      buscador.value;
 
 
-    document
-      .querySelectorAll(
-        ".factura-card"
-      )
-      .forEach(card => {
+    // =====================
+    // SI VACÍO
+    // =====================
 
-        card.style.display =
+    if(valor === ""){
 
-          card.textContent
-            .toLowerCase()
-            .includes(valor)
+      cargarBoletas();
 
-            ? "block"
-            : "none";
+      return;
+
+    }
+
+
+    // =====================
+    // FILTRAR
+    // =====================
+
+    const filtradas =
+      boletasGlobal.filter(boleta => {
+
+        const fechaBoleta =
+          new Date(boleta.fecha)
+            .toISOString()
+            .split("T")[0];
+
+
+        return fechaBoleta === valor;
+
+      });
+
+
+    // =====================
+    // LIMPIAR
+    // =====================
+
+    container.innerHTML = "";
+
+
+    // =====================
+    // AGRUPAR
+    // =====================
+
+    const grupos = {};
+
+
+    filtradas.forEach(boleta => {
+
+      const fecha =
+        formatearFecha(
+          boleta.fecha
+        );
+
+
+      if(!grupos[fecha]){
+
+        grupos[fecha] = [];
+
+      }
+
+
+      grupos[fecha].push(
+        boleta
+      );
+
+    });
+
+
+    // =====================
+    // MOSTRAR
+    // =====================
+
+    Object.keys(grupos)
+      .forEach(fecha => {
+
+
+        let totalDia = 0;
+
+
+        grupos[fecha]
+          .forEach(boleta => {
+
+            totalDia +=
+              Number(
+                boleta.total || 0
+              );
+
+          });
+
+
+        const titulo =
+          document.createElement(
+            "div"
+          );
+
+
+        titulo.classList.add(
+          "semana-title"
+        );
+
+
+        titulo.innerHTML = `
+
+          <div class="dia-header">
+
+            <div>
+
+              📅 ${fecha}
+
+            </div>
+
+            <div class="total-semana">
+
+              Total del Día:
+              $${totalDia.toLocaleString("es-CL")}
+
+            </div>
+
+            <button
+              class="btn-pdf-dia"
+            >
+
+              📄 PDF Día
+
+            </button>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(
+          titulo
+        );
+
+
+        titulo.querySelector(
+          ".btn-pdf-dia"
+        ).addEventListener(
+          "click",
+          () => {
+
+            exportarPDFDia(
+
+              fecha,
+
+              grupos[fecha]
+
+            );
+
+          }
+        );
+
+
+        grupos[fecha]
+          .forEach(boleta => {
+
+            renderBoleta(
+              boleta
+            );
+
+          });
 
       });
 

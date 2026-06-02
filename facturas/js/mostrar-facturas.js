@@ -869,7 +869,7 @@ function agruparPorDia(
 
 
 // =========================
-// BUSCADOR
+// BUSCADOR SOLO FECHA
 // =========================
 
 buscador.addEventListener(
@@ -877,24 +877,151 @@ buscador.addEventListener(
   () => {
 
     const valor =
-      buscador.value
-        .toLowerCase();
+      buscador.value;
 
 
-    document
-      .querySelectorAll(
-        ".factura-card"
-      )
-      .forEach(card => {
+    // =====================
+    // SI NO HAY FECHA
+    // =====================
 
-        card.style.display =
+    if(valor === ""){
 
-          card.textContent
-            .toLowerCase()
-            .includes(valor)
+      cargarFacturas();
 
-            ? "block"
-            : "none";
+      return;
+
+    }
+
+
+    // =====================
+    // FILTRAR FACTURAS
+    // =====================
+
+    const filtradas =
+      facturasGlobal.filter(factura => {
+
+        const fechaFactura =
+          new Date(factura.fecha)
+            .toISOString()
+            .split("T")[0];
+
+
+        return fechaFactura === valor;
+
+      });
+
+
+    // =====================
+    // LIMPIAR
+    // =====================
+
+    container.innerHTML = "";
+
+
+    // =====================
+    // AGRUPAR
+    // =====================
+
+    const grupos =
+      agruparPorDia(
+        filtradas
+      );
+
+
+    Object.keys(grupos)
+      .reverse()
+      .forEach(semana => {
+
+        let totalSemana = 0;
+
+
+        grupos[semana]
+          .forEach(factura => {
+
+            totalSemana +=
+              Number(
+                factura.total || 0
+              );
+
+          });
+
+
+        const titulo =
+          document.createElement(
+            "div"
+          );
+
+        titulo.classList.add(
+          "semana-title"
+        );
+
+
+        titulo.innerHTML = `
+
+          <div class="dia-header">
+
+            <div>
+
+              📅 ${semana}
+
+            </div>
+
+            <div class="total-semana">
+
+              Total del Día:
+              $${totalSemana.toLocaleString("es-CL")}
+
+            </div>
+
+            <button
+              class="btn-pdf-dia"
+              data-dia="${semana}"
+            >
+
+              📄 PDF Día
+
+            </button>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(
+          titulo
+        );
+
+
+        const btnPdfDia =
+          titulo.querySelector(
+            ".btn-pdf-dia"
+          );
+
+
+        btnPdfDia.addEventListener(
+          "click",
+          () => {
+
+            exportarPDFDia(
+
+              semana,
+
+              grupos[semana]
+
+            );
+
+          }
+        );
+
+
+        grupos[semana]
+          .forEach(factura => {
+
+            renderFactura(
+              factura
+            );
+
+          });
 
       });
 
