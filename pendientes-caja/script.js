@@ -632,6 +632,36 @@ function showToast(
 
 
 // =====================================================
+// RECARGAR AL VOLVER A LA APP
+// =====================================================
+
+document.addEventListener(
+
+  "visibilitychange",
+
+  () => {
+
+    // =====================
+    // SI VOLVIÓ A LA APP
+    // =====================
+
+    if(!document.hidden){
+
+      console.log(
+        "Recargando pendientes..."
+      );
+
+
+      cargarPendientes();
+
+    }
+
+  }
+
+);
+
+
+// =====================================================
 // INIT
 // =====================================================
 
