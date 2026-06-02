@@ -27,10 +27,6 @@ async function fetchConReintento(
 
         try{
 
-            textoCarga.innerText =
-                `Cargando ${nombre}...`;
-
-
             const respuesta =
                 await fetch(url);
 
@@ -59,7 +55,7 @@ async function fetchConReintento(
 
 
             // =========================
-            // SI FALLÓ Y QUEDAN INTENTOS
+            // REINTENTO
             // =========================
 
             if(intento < maxIntentos){
@@ -82,7 +78,7 @@ async function fetchConReintento(
 
 
             // =========================
-            // SI FALLARON TODOS
+            // ERROR FINAL
             // =========================
 
             else{
@@ -114,7 +110,7 @@ async function fetchConReintento(
 async function precargarSistema(){
 
     // =========================
-    // SI YA PRECARGÓ
+    // YA PRECARGÓ
     // =========================
 
     const yaPrecargo =
@@ -125,7 +121,6 @@ async function precargarSistema(){
 
 
     // =========================
-    // SI YA PRECARGÓ
     // ENTRAR DIRECTO
     // =========================
 
@@ -157,63 +152,60 @@ async function precargarSistema(){
     try{
 
         // =========================
-        // INVENTARIO
+        // MENSAJE
         // =========================
 
-        await fetchConReintento(
-
-            "https://script.google.com/macros/s/AKfycbwIMlU6IXzxrApBscFjy648rTxQalvoCE0ssQjK25kFOATadQlHIeogFzbu-CPQHiQu/exec",
-
-            "inventario",
-
-            textoCarga
-
-        );
+        textoCarga.innerText =
+            "Cargando sistema...";
 
 
         // =========================
-        // FACTURAS
+        // CARGAR TODO JUNTO
         // =========================
 
-        await fetchConReintento(
+        await Promise.all([
 
-            "https://script.google.com/macros/s/AKfycbxVrGYmQIg8cDXJVPWrtMNKMA6ZrrFAZpGR833dSwgONlXLolB_lTy5BoZqURDe9VM/exec",
+            fetchConReintento(
 
-            "facturas",
+                "https://script.google.com/macros/s/AKfycbwIMlU6IXzxrApBscFjy648rTxQalvoCE0ssQjK25kFOATadQlHIeogFzbu-CPQHiQu/exec",
 
-            textoCarga
+                "inventario",
 
-        );
+                textoCarga
 
+            ),
 
-        // =========================
-        // BOLETAS
-        // =========================
+            fetchConReintento(
 
-        await fetchConReintento(
+                "https://script.google.com/macros/s/AKfycbxVrGYmQIg8cDXJVPWrtMNKMA6ZrrFAZpGR833dSwgONlXLolB_lTy5BoZqURDe9VM/exec",
 
-            "https://script.google.com/macros/s/AKfycbyaezC7kHu3hQram5iAS81pHg5S8gAsohuQdeV7eVTQrFVJ8-Dkr5SUFqMawXqe_PAb/exec",
+                "facturas",
 
-            "boletas",
+                textoCarga
 
-            textoCarga
+            ),
 
-        );
+            fetchConReintento(
 
+                "https://script.google.com/macros/s/AKfycbyaezC7kHu3hQram5iAS81pHg5S8gAsohuQdeV7eVTQrFVJ8-Dkr5SUFqMawXqe_PAb/exec",
 
-        // =========================
-        // PLANIFICACIÓN
-        // =========================
+                "boletas",
 
-        await fetchConReintento(
+                textoCarga
 
-            "https://script.google.com/macros/s/AKfycbyJ32nhAERU_zwIlugAR1iVDpETnGsmGSIxjLfnRMZWq8V1a8IUIT9yMYuunwVnMwxB/exec",
+            ),
 
-            "planificación",
+            fetchConReintento(
 
-            textoCarga
+                "https://script.google.com/macros/s/AKfycbyJ32nhAERU_zwIlugAR1iVDpETnGsmGSIxjLfnRMZWq8V1a8IUIT9yMYuunwVnMwxB/exec",
 
-        );
+                "planificación",
+
+                textoCarga
+
+            )
+
+        ]);
 
 
         // =========================
