@@ -26,123 +26,10 @@ const enviarBtn =
   );
 
 
-// =====================================================
-// PANTALLA CARGA
-// =====================================================
-
-function mostrarPantallaCarga(){
-
-  // =====================
-  // EVITAR DUPLICADOS
-  // =====================
-
-  if(
-    document.getElementById(
-      "pantallaCarga"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  const overlay =
-    document.createElement(
-      "div"
-    );
-
-
-  overlay.id =
-    "pantallaCarga";
-
-
-  overlay.innerHTML = `
-
-    <div style="
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(6px);
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: white;
-      gap: 20px;
-    ">
-
-      <img
-        src="../assets/logoUspa.jpeg"
-        class="logo"
-      >
-
-      <h2 style="
-        margin:0;
-        font-size:28px;
-      ">
-
-        Uspalay
-
-      </h2>
-
-      <p style="
-        margin:0;
-        font-size:18px;
-        opacity:0.8;
-      ">
-
-        Cargando pendientes...
-
-      </p>
-
-    </div>
-
-  `;
-
-
-  document.body.appendChild(
-    overlay
+const btnRefrescar =
+  document.getElementById(
+    "btnRefrescar"
   );
-
-}
-
-
-// =====================================================
-// OCULTAR CARGA
-// =====================================================
-
-function ocultarPantallaCarga(){
-
-  const overlay =
-    document.getElementById(
-      "pantallaCarga"
-    );
-
-
-  if(!overlay){
-
-    return;
-
-  }
-
-
-  overlay.style.transition =
-    "0.4s";
-
-
-  overlay.style.opacity =
-    "0";
-
-
-  setTimeout(() => {
-
-    overlay.remove();
-
-  }, 400);
-
-}
 
 
 // =====================================================
@@ -248,6 +135,103 @@ function eliminarInput(boton){
 enviarBtn.addEventListener(
   "click",
   enviarPendientes
+);
+
+
+// =====================================================
+// REFRESCAR
+// =====================================================
+
+btnRefrescar.addEventListener(
+  "click",
+  async () => {
+
+    try{
+
+      // =====================
+      // BLOQUEAR TODO
+      // =====================
+
+      document.body.style.opacity =
+        "0.6";
+
+
+      document.body.style.pointerEvents =
+        "none";
+
+
+      // =====================
+      // BOTON
+      // =====================
+
+      btnRefrescar.disabled =
+        true;
+
+
+      btnRefrescar.innerText =
+        "⟳";
+
+
+      // =====================
+      // MENSAJE
+      // =====================
+
+      showToast(
+        "Recargando pendientes...",
+        "success"
+      );
+
+
+      // =====================
+      // RECARGAR
+      // =====================
+
+      await cargarPendientes();
+
+
+      // =====================
+      // EXITO
+      // =====================
+
+      showToast(
+        "Pendientes actualizados",
+        "success"
+      );
+
+
+    }catch(error){
+
+      console.log(error);
+
+
+      showToast(
+        "Error al actualizar",
+        "error"
+      );
+
+    }
+
+
+    // =====================
+    // DESBLOQUEAR
+    // =====================
+
+    document.body.style.opacity =
+      "1";
+
+
+    document.body.style.pointerEvents =
+      "auto";
+
+
+    btnRefrescar.disabled =
+      false;
+
+
+    btnRefrescar.innerText =
+      "↻";
+
+  }
 );
 
 
@@ -486,15 +470,9 @@ async function cargarPendientes(){
       pendientes
     );
 
-
-    ocultarPantallaCarga();
-
   }catch(error){
 
     console.log(error);
-
-
-    ocultarPantallaCarga();
 
   }
 
@@ -759,7 +737,5 @@ function showToast(
 // =====================================================
 // INIT
 // =====================================================
-
-mostrarPantallaCarga();
 
 cargarPendientes();
