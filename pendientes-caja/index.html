@@ -13,7 +13,10 @@
           href="style.css">
 
 
-    <link rel="manifest" href="/PaguinaUspalay/manifest.json">
+    <link
+        rel="manifest"
+        href="/PaguinaUspalay/pendientes-caja/pwa/manifest.json"
+    >
 
     <meta
         name="theme-color"
@@ -177,6 +180,32 @@
     <script src="api.js"></script>
 
     <script src="script.js"></script>
+
+
+    <!-- =========================
+         SERVICE WORKER
+    ========================= -->
+
+    <script>
+
+    if("serviceWorker" in navigator){
+
+        navigator.serviceWorker
+            .register(
+                "/PaguinaUspalay/pendientes-caja/pwa/service-worker.js"
+            )
+
+            .then(() => {
+
+                console.log(
+                    "Service Worker OK"
+                );
+
+            });
+
+    }
+
+    </script>
 
 </body>
 </html>
