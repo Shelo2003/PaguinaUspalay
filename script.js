@@ -159,9 +159,9 @@ async function precargarSistema(){
             "Cargando sistema...";
 
 
-        // =========================
+   
         // CARGAR TODO JUNTO
-        // =========================
+     
 
         await Promise.all([
 

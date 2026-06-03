@@ -8,6 +8,12 @@ const buscador =
     "buscar"
   );
 
+
+const filtroPersona =
+  document.getElementById(
+    "filtroPersona"
+  );
+
 let facturasGlobal = [];
 
 
@@ -358,62 +364,71 @@ function renderFactura(factura){
 
   card.innerHTML = `
 
-    <div class="factura-header">
+<div class="factura-header">
 
-      <div>
+  <div class="pertenece-top">
 
-        <strong>Factura:</strong>
+    👤 ${
+      factura.perteneceA || "Sin asignar"
+    }
 
-        ${factura.numero_factura || "SIN N°"}
-
-      </div>
-
-
-      <div>
-
-        <strong>Proveedor:</strong>
-
-        ${factura.proveedor}
-
-      </div>
+  </div>
 
 
-      <div>
+  <div>
 
-        <strong>Fecha:</strong>
+    <strong>Factura:</strong>
 
-        ${formatearFechaSimple(
-          factura.fecha
-        )}
+    ${factura.numero_factura || "SIN N°"}
 
-      </div>
+  </div>
 
 
-      <div style="display:flex; gap:10px;">
+  <div>
 
-        <button class="btn-editar">
+    <strong>Proveedor:</strong>
 
-          Editar
+    ${factura.proveedor}
 
-        </button>
-
-
-        <button class="btn-eliminar">
-
-          Eliminar
-
-        </button>
+  </div>
 
 
-        <button class="btn-PDF">
+  <div>
 
-          PDF
+    <strong>Fecha:</strong>
 
-        </button>
+    ${formatearFechaSimple(
+      factura.fecha
+    )}
 
-      </div>
+  </div>
 
-    </div>
+
+  <div style="display:flex; gap:10px;">
+
+    <button class="btn-editar">
+
+      Editar
+
+    </button>
+
+
+    <button class="btn-eliminar">
+
+      Eliminar
+
+    </button>
+
+
+    <button class="btn-PDF">
+
+      PDF
+
+    </button>
+
+  </div>
+
+</div>
 
 
     <div class="factura-detalle">
@@ -443,6 +458,37 @@ function renderFactura(factura){
         )}
 
       </h3>
+
+      ${
+
+        factura.nota &&
+        factura.nota.trim() !== ""
+
+          ?
+
+          `
+
+            <div style="margin-top:15px;">
+
+              <strong>
+
+                📝 Nota:
+
+              </strong>
+
+              <br>
+
+              ${factura.nota}
+
+            </div>
+
+          `
+
+          :
+
+          ""
+
+      }
 
     </div>
 
@@ -631,187 +677,257 @@ function renderFactura(factura){
   );
 
 
-  // =====================
-  // PDF INDIVIDUAL
-  // =====================
+// =====================
+// PDF INDIVIDUAL
+// =====================
 
-  btnWORD.addEventListener(
-    "click",
-    (e) => {
+btnWORD.addEventListener(
+  "click",
+  (e) => {
 
-      e.stopPropagation();
-
-
-      const { jsPDF } =
-        window.jspdf;
+    e.stopPropagation();
 
 
-      const doc =
-        new jsPDF();
+    const { jsPDF } =
+      window.jspdf;
 
 
-      doc.setFont(
-        "helvetica",
-        "bold"
-      );
+    const doc =
+      new jsPDF();
 
-      doc.setFontSize(22);
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+    doc.setFontSize(22);
+
+    doc.text(
+      "FACTURA",
+      105,
+      20,
+      { align:"center" }
+    );
+
+
+    doc.line(
+      20,
+      28,
+      190,
+      28
+    );
+
+
+    doc.setFontSize(12);
+
+    doc.setFont(
+      "helvetica",
+      "normal"
+    );
+
+
+    // =========================
+    // DATOS FACTURA
+    // =========================
+
+    doc.text(
+      `Pertenece a: ${factura.perteneceA || "Sin asignar"}`,
+      20,
+      40
+    );
+
+
+    doc.text(
+      `Proveedor: ${factura.proveedor}`,
+      20,
+      50
+    );
+
+
+    doc.text(
+      `Factura: ${factura.numero_factura || "SIN N°"}`,
+      20,
+      60
+    );
+
+
+    doc.text(
+      `Fecha: ${formatearFechaSimple(factura.fecha)}`,
+      20,
+      70
+    );
+
+
+    let y = 95;
+
+
+    // =========================
+    // CABECERA TABLA
+    // =========================
+
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+
+    doc.text(
+      "Producto",
+      20,
+      y
+    );
+
+    doc.text(
+      "Cant.",
+      120,
+      y
+    );
+
+    doc.text(
+      "Total",
+      160,
+      y
+    );
+
+
+    y += 5;
+
+
+    doc.line(
+      20,
+      y,
+      190,
+      y
+    );
+
+
+    y += 10;
+
+
+    // =========================
+    // PRODUCTOS
+    // =========================
+
+    doc.setFont(
+      "helvetica",
+      "normal"
+    );
+
+
+    factura.productos.forEach(p => {
 
       doc.text(
-        "FACTURA",
-        105,
-        20,
-        { align:"center" }
-      );
-
-
-      doc.line(
-        20,
-        28,
-        190,
-        28
-      );
-
-
-      doc.setFontSize(12);
-
-      doc.setFont(
-        "helvetica",
-        "normal"
-      );
-
-
-      doc.text(
-        `Proveedor: ${factura.proveedor}`,
-        20,
-        45
-      );
-
-
-      doc.text(
-        `Factura: ${factura.numero_factura || "SIN N°"}`,
-        20,
-        55
-      );
-
-
-      doc.text(
-        `Fecha: ${formatearFechaSimple(factura.fecha)}`,
-        20,
-        65
-      );
-
-
-      let y = 85;
-
-
-      doc.setFont(
-        "helvetica",
-        "bold"
-      );
-
-
-      doc.text(
-        "Producto",
+        String(p.nombre),
         20,
         y
       );
 
+
       doc.text(
-        "Cant.",
-        120,
+        String(p.cantidad),
+        125,
         y
       );
 
+
       doc.text(
-        "Total",
+        `$${formatearDinero(p.precio)}`,
         160,
-        y
-      );
-
-
-      y += 5;
-
-
-      doc.line(
-        20,
-        y,
-        190,
         y
       );
 
 
       y += 10;
 
-
-      doc.setFont(
-        "helvetica",
-        "normal"
-      );
+    });
 
 
-      factura.productos.forEach(p => {
-
-        doc.text(
-          String(p.nombre),
-          20,
-          y
-        );
-
-
-        doc.text(
-          String(p.cantidad),
-          125,
-          y
-        );
+    doc.line(
+      20,
+      y,
+      190,
+      y
+    );
 
 
-        doc.text(
-          `$${formatearDinero(p.precio)}`,
-          160,
-          y
-        );
+    y += 15;
 
 
-        y += 10;
+    // =========================
+    // TOTAL
+    // =========================
 
-      });
+    doc.setFont(
+      "helvetica",
+      "bold"
+    );
+
+    doc.setFontSize(16);
 
 
-      doc.line(
-        20,
-        y,
-        190,
-        y
-      );
+    doc.text(
+      `TOTAL: $${formatearDinero(factura.total)}`,
+      20,
+      y
+    );
 
 
-      y += 15;
+    // =========================
+    // NOTA
+    // =========================
 
+    if(
+
+      factura.nota &&
+      factura.nota.trim() !== ""
+
+    ){
+
+      y += 20;
+
+      doc.setFontSize(12);
 
       doc.setFont(
         "helvetica",
         "bold"
       );
 
-      doc.setFontSize(16);
-
-
       doc.text(
-        `TOTAL: $${formatearDinero(factura.total)}`,
+        "NOTA:",
         20,
         y
       );
 
 
-      doc.save(
+      y += 8;
 
-        `Factura-${factura.numero_factura || factura.id}.pdf`
+      doc.setFont(
+        "helvetica",
+        "normal"
+      );
 
+      doc.text(
+        factura.nota,
+        20,
+        y
       );
 
     }
-  );
+
+
+    // =========================
+    // GUARDAR PDF
+    // =========================
+
+    doc.save(
+
+      `Factura-${factura.numero_factura || factura.id}.pdf`
+
+    );
+
+  }
+);
 
 
   container.appendChild(card);
@@ -872,33 +988,31 @@ function agruparPorDia(
 // BUSCADOR SOLO FECHA
 // =========================
 
-buscador.addEventListener(
-  "input",
-  () => {
+// =========================
+// FILTROS
+// =========================
 
-    const valor =
-      buscador.value;
+function aplicarFiltros(){
 
+  const fechaSeleccionada =
+    buscador.value;
 
-    // =====================
-    // SI NO HAY FECHA
-    // =====================
-
-    if(valor === ""){
-
-      cargarFacturas();
-
-      return;
-
-    }
+  const personaSeleccionada =
+    filtroPersona.value;
 
 
-    // =====================
-    // FILTRAR FACTURAS
-    // =====================
+  let filtradas =
+    [...facturasGlobal];
 
-    const filtradas =
-      facturasGlobal.filter(factura => {
+
+  // =====================
+  // FILTRO FECHA
+  // =====================
+
+  if(fechaSeleccionada !== ""){
+
+    filtradas =
+      filtradas.filter(factura => {
 
         const fechaFactura =
           new Date(factura.fecha)
@@ -906,126 +1020,172 @@ buscador.addEventListener(
             .split("T")[0];
 
 
-        return fechaFactura === valor;
-
-      });
-
-
-    // =====================
-    // LIMPIAR
-    // =====================
-
-    container.innerHTML = "";
-
-
-    // =====================
-    // AGRUPAR
-    // =====================
-
-    const grupos =
-      agruparPorDia(
-        filtradas
-      );
-
-
-    Object.keys(grupos)
-      .reverse()
-      .forEach(semana => {
-
-        let totalSemana = 0;
-
-
-        grupos[semana]
-          .forEach(factura => {
-
-            totalSemana +=
-              Number(
-                factura.total || 0
-              );
-
-          });
-
-
-        const titulo =
-          document.createElement(
-            "div"
-          );
-
-        titulo.classList.add(
-          "semana-title"
+        return (
+          fechaFactura ===
+          fechaSeleccionada
         );
-
-
-        titulo.innerHTML = `
-
-          <div class="dia-header">
-
-            <div>
-
-              📅 ${semana}
-
-            </div>
-
-            <div class="total-semana">
-
-              Total del Día:
-              $${totalSemana.toLocaleString("es-CL")}
-
-            </div>
-
-            <button
-              class="btn-pdf-dia"
-              data-dia="${semana}"
-            >
-
-              📄 PDF Día
-
-            </button>
-
-          </div>
-
-        `;
-
-
-        container.appendChild(
-          titulo
-        );
-
-
-        const btnPdfDia =
-          titulo.querySelector(
-            ".btn-pdf-dia"
-          );
-
-
-        btnPdfDia.addEventListener(
-          "click",
-          () => {
-
-            exportarPDFDia(
-
-              semana,
-
-              grupos[semana]
-
-            );
-
-          }
-        );
-
-
-        grupos[semana]
-          .forEach(factura => {
-
-            renderFactura(
-              factura
-            );
-
-          });
 
       });
 
   }
+
+
+  // =====================
+  // FILTRO PERSONA
+  // =====================
+
+  if(personaSeleccionada !== "todas"){
+
+    filtradas =
+      filtradas.filter(factura => {
+
+        return (
+
+          (factura.perteneceA || "")
+            .toLowerCase()
+
+          ===
+
+          personaSeleccionada
+            .toLowerCase()
+
+        );
+
+      });
+
+  }
+
+
+  // =====================
+  // LIMPIAR
+  // =====================
+
+  container.innerHTML = "";
+
+
+  // =====================
+  // AGRUPAR
+  // =====================
+
+  const grupos =
+    agruparPorDia(
+      filtradas
+    );
+
+
+  Object.keys(grupos)
+    .reverse()
+    .forEach(semana => {
+
+      let totalSemana = 0;
+
+
+      grupos[semana]
+        .forEach(factura => {
+
+          totalSemana +=
+            Number(
+              factura.total || 0
+            );
+
+        });
+
+
+      const titulo =
+        document.createElement(
+          "div"
+        );
+
+      titulo.classList.add(
+        "semana-title"
+      );
+
+
+      titulo.innerHTML = `
+
+        <div class="dia-header">
+
+          <div>
+
+            📅 ${semana}
+
+          </div>
+
+          <div class="total-semana">
+
+            Total del Día:
+            $${totalSemana.toLocaleString("es-CL")}
+
+          </div>
+
+          <button
+            class="btn-pdf-dia"
+            data-dia="${semana}"
+          >
+
+            📄 PDF Día
+
+          </button>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(
+        titulo
+      );
+
+
+      const btnPdfDia =
+        titulo.querySelector(
+          ".btn-pdf-dia"
+        );
+
+
+      btnPdfDia.addEventListener(
+        "click",
+        () => {
+
+          exportarPDFDia(
+
+            semana,
+
+            grupos[semana]
+
+          );
+
+        }
+      );
+
+
+      grupos[semana]
+        .forEach(factura => {
+
+          renderFactura(
+            factura
+          );
+
+        });
+
+    });
+
+}
+
+
+// =========================
+// EVENTOS FILTROS
+// =========================
+
+buscador.addEventListener(
+  "input",
+  aplicarFiltros
+);
+
+
+filtroPersona.addEventListener(
+  "change",
+  aplicarFiltros
 );
 
 
@@ -1129,6 +1289,16 @@ function exportarPDFDia(
     doc.setFontSize(14);
 
     doc.text(
+      `Pertenece a: ${factura.perteneceA || "Sin asignar"}`,
+      20,
+      y
+    );
+
+
+    y += 8;
+
+
+    doc.text(
       `Proveedor: ${factura.proveedor}`,
       20,
       y
@@ -1163,7 +1333,7 @@ function exportarPDFDia(
     );
 
 
-    y += 10;
+    y += 12;
 
 
     doc.setFont(
@@ -1261,6 +1431,35 @@ function exportarPDFDia(
       20,
       y
     );
+
+
+    // =========================
+    // NOTA
+    // =========================
+
+    if(
+
+      factura.nota &&
+      factura.nota.trim() !== ""
+
+    ){
+
+      y += 10;
+
+      doc.setFont(
+        "helvetica",
+        "normal"
+      );
+
+      doc.setFontSize(10);
+
+      doc.text(
+        `Nota: ${factura.nota}`,
+        20,
+        y
+      );
+
+    }
 
 
     y += 20;

@@ -77,6 +77,12 @@ const listaProveedores =
 const agregarProveedorBtn =
   document.getElementById("agregarProveedorBtn");
 
+const perteneceASelect =
+  document.getElementById("perteneceA");
+
+const notaTextarea =
+  document.getElementById("nota");
+
 
 // =========================
 // PANTALLA CARGA
@@ -184,7 +190,7 @@ function bloquearFormularioFactura(){
 
   document
     .querySelectorAll(
-      "input, select, button"
+      "input, select, textarea, button"
     )
     .forEach(elemento => {
 
@@ -240,7 +246,7 @@ function desbloquearFormularioFactura(){
 
   document
     .querySelectorAll(
-      "input, select, button"
+      "input, select, textarea, button"
     )
     .forEach(elemento => {
 
@@ -276,6 +282,10 @@ async function cargarProveedores(){
       await respuesta.json();
 
 
+    // =========================
+    // PROVEEDORES
+    // =========================
+
     proveedorSelect.innerHTML = `
 
       <option value="">
@@ -290,8 +300,6 @@ async function cargarProveedores(){
 
     (datos.proveedores || [])
       .forEach(proveedor => {
-
-        // SELECT
 
         const option =
           document.createElement(
@@ -308,8 +316,6 @@ async function cargarProveedores(){
           option
         );
 
-
-        // LISTA
 
         const div =
           document.createElement(
@@ -329,12 +335,46 @@ async function cargarProveedores(){
 
       });
 
+
+    // =========================
+    // PERSONAS
+    // =========================
+
+    perteneceASelect.innerHTML = `
+
+      <option value="">
+        Seleccionar persona
+      </option>
+
+    `;
+
+
+    (datos.personas || [])
+      .forEach(persona => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          persona;
+
+        option.textContent =
+          persona;
+
+        perteneceASelect.appendChild(
+          option
+        );
+
+      });
+
   }catch(error){
 
     console.log(error);
 
     showToast(
-      "Error cargando proveedores",
+      "Error cargando datos",
       "error"
     );
 
@@ -639,6 +679,16 @@ guardarFacturaBtn
           .getElementById("proveedor")
           .value;
 
+      const perteneceA =
+        document
+          .getElementById("perteneceA")
+          .value;
+
+      const nota =
+        document
+          .getElementById("nota")
+          .value;
+
       const numero_factura =
         document
           .getElementById("numero_factura")
@@ -663,6 +713,20 @@ guardarFacturaBtn
 
         showToast(
           "Seleccione proveedor",
+          "error"
+        );
+
+        desbloquearFormularioFactura();
+
+        return;
+
+      }
+
+
+      if(!perteneceA.trim()){
+
+        showToast(
+          "Seleccione persona",
           "error"
         );
 
@@ -700,10 +764,6 @@ guardarFacturaBtn
 
       }
 
-
-      // =========================
-      // VALIDAR PRODUCTOS
-      // =========================
 
       const tieneProductoValido =
         Array.from(productosHTML)
@@ -800,6 +860,8 @@ guardarFacturaBtn
         id: facturaEditandoId,
 
         proveedor,
+        perteneceA,
+        nota,
         numero_factura,
         fecha,
         productos,
@@ -888,6 +950,18 @@ function(factura){
 
 
   document
+    .getElementById("perteneceA")
+    .value =
+      factura.perteneceA || "";
+
+
+  document
+    .getElementById("nota")
+    .value =
+      factura.nota || "";
+
+
+  document
     .getElementById("fecha")
     .value =
       factura.fecha;
@@ -967,5 +1041,36 @@ window.addEventListener("load", async () => {
 
 
   ocultarCargaInicial();
+
+});
+
+
+
+
+// =====================================================
+// BLOQUEAR SCROLL EN INPUT NUMBER
+// =====================================================
+
+document.querySelectorAll(
+
+  'input[type="number"]'
+
+).forEach(input => {
+
+  input.addEventListener(
+
+    "wheel",
+
+    (e) => {
+
+      e.preventDefault();
+
+    },
+
+    {
+      passive:false
+    }
+
+  );
 
 });
