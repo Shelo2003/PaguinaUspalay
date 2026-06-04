@@ -472,6 +472,37 @@ function renderBoleta(
 
       </h3>
 
+      ${
+
+        boleta.nota &&
+        boleta.nota.trim() !== ""
+
+          ?
+
+          `
+
+            <div style="margin-top:15px;">
+
+              <strong>
+
+                📝 Nota:
+
+              </strong>
+
+              <br>
+
+              ${boleta.nota}
+
+            </div>
+
+          `
+
+          :
+
+          ""
+
+      }
+
     </div>
 
   `;
@@ -839,6 +870,43 @@ function renderBoleta(
         y
       );
 
+      if(
+
+        boleta.nota &&
+        boleta.nota.trim() !== ""
+
+      ){
+
+        y += 20;
+
+        doc.setFontSize(12);
+
+        doc.setFont(
+          "helvetica",
+          "bold"
+        );
+
+        doc.text(
+          "NOTA:",
+          20,
+          y
+        );
+
+        y += 8;
+
+        doc.setFont(
+          "helvetica",
+          "normal"
+        );
+
+        doc.text(
+          boleta.nota,
+          20,
+          y
+        );
+
+      }
+
 
       doc.save(
         `Boleta-${boleta.numero_boleta}.pdf`
@@ -1081,6 +1149,31 @@ function exportarPDFDia(
       20,
       y
     );
+
+
+    if(
+
+      boleta.nota &&
+      boleta.nota.trim() !== ""
+
+    ){
+
+      y += 10;
+
+      doc.setFont(
+        "helvetica",
+        "normal"
+      );
+
+      doc.setFontSize(10);
+
+      doc.text(
+        `Nota: ${boleta.nota}`,
+        20,
+        y
+      );
+
+    }
 
 
     y += 20;

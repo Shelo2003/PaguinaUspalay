@@ -363,6 +363,13 @@ guardarBoletaBtn
           )
           .value;
 
+      const nota =
+        document
+          .getElementById(
+            "nota"
+          )
+          .value;
+
 
       const productos = [];
 
@@ -424,7 +431,8 @@ guardarBoletaBtn
         numero_boleta,
         fecha,
         productos,
-        total
+        total,
+        nota
 
       };
 
@@ -525,6 +533,13 @@ function cargarBoletaEditar(
       .toISOString()
       .split("T")[0];
 
+      
+  document
+    .getElementById(
+      "nota"
+    )
+    .value =
+      boleta.nota || "";
 
   productosContainer.innerHTML = "";
 
