@@ -154,14 +154,16 @@ function crearFilaProducto(
     >
 
     <input
-      type="number"
+      type="text"
       placeholder="Cantidad"
       class="cantidad"
       value="${cantidad}"
     >
 
     <input
-      type="number"
+      type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
       placeholder="Total Producto"
       class="precio"
       value="${precio}"
@@ -177,6 +179,28 @@ function crearFilaProducto(
   productosContainer.appendChild(
     div
   );
+
+
+  div
+    .querySelectorAll(
+      '.precio'
+    )
+    .forEach(input => {
+
+      input.addEventListener(
+        "input",
+        () => {
+
+          input.value =
+            input.value.replace(
+              /\D/g,
+              ""
+            );
+
+        }
+      );
+
+    });
 
 
   div.querySelector(".eliminar")
@@ -386,13 +410,9 @@ guardarBoletaBtn
 
 
         const cantidad =
-          Number(
-
-            producto
-              .querySelector(".cantidad")
-              .value
-
-          );
+          producto
+            .querySelector(".cantidad")
+            .value;
 
 
         const precio =
