@@ -3,6 +3,12 @@ const container =
     "facturas-container"
   );
 
+const resumenFacturas =
+  document.getElementById(
+    "resumen-facturas"
+  );
+
+
 const buscador =
   document.getElementById(
     "buscar"
@@ -160,6 +166,9 @@ async function cargarFacturas(
 
     container.innerHTML = "";
 
+    let totalClaudio = 0;
+    let totalLeonardo = 0;
+
 
     const grupos =
     agruparPorDia(
@@ -181,10 +190,32 @@ async function cargarFacturas(
         grupos[semana]
           .forEach(factura => {
 
-            totalSemana +=
+            const totalFactura =
               Number(
                 factura.total || 0
               );
+
+            totalSemana += totalFactura;
+
+            if (
+              (factura.perteneceA || "")
+                .toLowerCase()
+                .includes("claudio")
+            ) {
+
+              totalClaudio += totalFactura;
+
+            }
+
+            if (
+              (factura.perteneceA || "")
+                .toLowerCase()
+                .includes("leonardo")
+            ) {
+
+              totalLeonardo += totalFactura;
+
+            }
 
           });
 
@@ -266,6 +297,52 @@ async function cargarFacturas(
           });
 
       });
+
+
+      const totalGeneral =
+        totalClaudio +
+        totalLeonardo;
+
+
+      resumenFacturas.innerHTML = `
+
+        <div class="resumen-item">
+
+          👤 Claudio:
+          $${totalClaudio.toLocaleString("es-CL")}
+
+        </div>
+
+        <div class="resumen-item">
+
+          👤 Leonardo:
+          $${totalLeonardo.toLocaleString("es-CL")}
+
+        </div>
+
+        <div class="resumen-item total-general">
+
+          💰 Total General:
+          $${totalGeneral.toLocaleString("es-CL")}
+
+        </div>
+
+      `;
+
+      console.log(
+        "Claudio:",
+        totalClaudio
+      );
+
+      console.log(
+        "Leonardo:",
+        totalLeonardo
+      );
+
+      console.log(
+        "General:",
+        totalGeneral
+      );
 
   }catch(error){
 
